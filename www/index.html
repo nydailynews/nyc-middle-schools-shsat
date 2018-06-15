@@ -114,6 +114,7 @@
     <article>
         <div>
     
+<!--
   <div class="ad center">
     <div id='div-gpt-ad-1423507761396-1'>
       <script>
@@ -121,6 +122,7 @@
       </script>
     </div>
   </div>
+-->
 
 
 <style>
@@ -133,28 +135,40 @@ input {
 #school-table_filter {
 	float: left;
 }
+        tr td {
+            text-align: center;
+        }
+        tr > td:nth-child(2) {
+            text-align: left;
+        }
 </style>
 <section>
+		<h2 style="font-size:36px;">How will your middle school be affected by de Blasio’s SHSAT plan?</h2>
+		<p>This is a database of SHSAT offers to NYC 8th graders for offers of admission for the Fall 2018 school year. You can sort the table by any of its fields.</p>
+		<p>
+			Of particular note: The 7% cap column shows how many students from that school would be admitted to specialized high schools under Mayor de Blasio’s plan.
+			The column following the 7% cap, the Gain/Loss column, is a calculation that shows how many more or less students the school would send to specialized high school.
+		</p>
         <table id="school-table" class="stripe table-bordered">
             <thead>
                 <tr>
                     <th></th>
-                    <th class="all">School</th>
+                    <th class="all" style="min-width:150px;">School</th>
                     <th class="all">Borough</th>
                     <th class="all">Tested</th>
                     <th class="all">Passed</th>
                     <th class="all">8th graders</th>
-					<th class="all">7%</th>
+					<th class="all">7% cap</th>
 					<th class="all">Gain/Loss</th>
 					<th class="all">%&nbsp;Tested</th>
 					<th class="all">%&nbsp;Passed</th>
 					<th class="all">%&nbsp;Passed&nbsp;Overall</th>
-					<th class="all">%&nbsp;Asian</th>
-					<th class="all">%&nbsp;Black</th>
-					<th class="all">%&nbsp;Hispanic</th>
-					<th class="all">%&nbsp;White</th>
-					<th class="all">%&nbsp;With&nbsp;Disabilities</th>
-					<th class="all">%&nbsp;ELL</th>
+					<th class="none">%&nbsp;Asian</th>
+					<th class="none">%&nbsp;Black</th>
+					<th class="none">%&nbsp;Hispanic</th>
+					<th class="none">%&nbsp;White</th>
+					<th class="none">%&nbsp;With&nbsp;Disabilities</th>
+					<th class="none">%&nbsp;ELL</th>
 					<th class="all">%&nbsp;Poverty</th>
 					<th class="all">Economic Need Index</th>
 				</tr>
@@ -170,7 +184,7 @@ $.getJSON('data/shsat.json', function(data) {
     order: [ 7, "des" ],
     paging: true,
     pagingType: 'numbers',
-    pageLength: 30,
+    pageLength: 40,
     responsive: true,
     columns: [ 
         {
@@ -203,7 +217,7 @@ $.getJSON('data/shsat.json', function(data) {
     dom: '<"top">Wf<"clear">tip',
     // https://github.com/cyberhobo/ColumnFilterWidgets
     oColumnFilterWidgets: {
-        aiExclude: [ 0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ],
+        aiExclude: [ 0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 ],
         // sSeparator: ',  ',
         bGroupTerms: false,
     }
@@ -226,6 +240,9 @@ $.getJSON('data/shsat.json', function(data) {
   </div>
 <script src="//cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 <script src="//cdn.datatables.net/responsive/2.0.1/js/dataTables.responsive.js"></script>
+<!--
+<script src="js/ColumnFilterWidgets.js"></script>
+-->
 
 <!-- CONTENT-END -->
 
