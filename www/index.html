@@ -174,8 +174,8 @@ table.dataTable thead th, table.dataTable thead td {
 		<h2 style="font-size:36px;">NYC middle school SHSAT acceptance database, 2017-2018 school year</h2>
 		<p>This is a database of SHSAT offers to NYC 8th graders for offers of admission for the Fall 2018 school year. You can sort the table by any of its fields.</p>
 		<p>
-			Of note: The 7% cap column shows how many students from that school would be admitted to specialized high schools under Mayor de Blasio’s plan.
-			The column following the 7% cap, the Gain/Loss column, is a calculation that shows how many more or less students the school would send to specialized high school.
+			Of note: The 7% column shows how many students from that school would be admitted to specialized high schools under Mayor de Blasio’s plan.
+			The column following the 7%, the Gain/Loss column, is a calculation that shows how many more or less students the school would send to specialized high school.
 		</p>
         <table id="school-table" class="stripe table-bordered responsive">
             <thead>
@@ -186,15 +186,15 @@ table.dataTable thead th, table.dataTable thead td {
                     <th class="tablet desktop">8th graders</th>
                     <th class="tablet desktop">Tested</th>
                     <th class="tablet desktop">Accepted</th>
-					<th class="tablet desktop">7% cap</th>
-					<th class="all">Gain/Loss</th>
+					<th class="tablet desktop">7%</th>
+					<th class="all">Change</th>
 					<th class="desktop">%&nbsp;Tested</th>
 					<th class="desktop">%&nbsp;Accepted</th>
 					<th class="desktop">%&nbsp;Accepted Overall</th>
 					<th class="desktop">%&nbsp;Asian</th>
 					<th class="desktop">%&nbsp;Black</th>
 					<th class="desktop">%&nbsp;Hispanic</th>
-					<th class="none">%&nbsp;White</th>
+					<th class="desktop">%&nbsp;White</th>
 					<th class="none">%&nbsp;With&nbsp;Disabilities</th>
                     <th class="none">%&nbsp;<abbr title="English Language Learner">ELL</abbr></th>
 					<th class="desktop">%&nbsp;Poverty</th>
@@ -205,8 +205,19 @@ table.dataTable thead th, table.dataTable thead td {
             </tfoot>
         </table>
 <script>
-// Adapted from https://stackoverflow.com/questions/25944854/sorting-alphabetical-order-to-ignore-empty-cells-datatables
+// Sort additions adapted from https://stackoverflow.com/questions/25944854/sorting-alphabetical-order-to-ignore-empty-cells-datatables
+var school = {
+	data: {},
+	blurb: function(data) {
+		// Return markup suitable for a school detail view.
+		var sentence = "In the current school year, --(MS123)------- had ------ 8th graders take the Specialized High Schools Admissions Test.  ------ of them received offers of admission to one of the eight specialized high schools. Under the bill that Mayor de Blasio supports, the SHSAT would be ended and the top 7% of 8th graders would be offered admission, provided those students were in the top quarter of students citywide.  This would a change of ---- students for ---(MS123)---- being admitted. Students who do not make the top 7% cut would be eligible  for admission through a randomized drawing.";
+	},
+	detail: function(slug) {
+		console.log(school.data[slug]);
+	},
+};
 
+function school_detail(hey) { console.log('sdfsdf'); console.log(hey); }
 $.getJSON('data/shsat.json', function(data) {
     jQuery.extend( jQuery.fn.dataTableExt.oSort, {
         "non-empty-string-asc": function (str1, str2) {
@@ -258,7 +269,20 @@ $.getJSON('data/shsat.json', function(data) {
             data: null,
             defaultContent: ''
         },
-        {   data: "school" },
+        {   data: "school",
+			render: function ( data, type, row ) {
+				if ( type == 'display' || type == 'filter' ) {
+					// Add the detail data to the school object
+					// if it's not already in there.
+                    var slug = utils.slugify(data);
+                    if ( typeof school.data[slug] === 'undefined' ) school.data[slug] = row;
+                    return '<a href="#' + slug + '"\n\
+                        onClick="school.detail(\'' + slug + '\');">\n\
+                        ' + data + '</a>';
+                }
+                return data;
+			}
+		},
         {   data: "borough" },
         {   data: "eighth-graders" },
         {   data: "tested",
@@ -408,6 +432,7 @@ $.getJSON('data/shsat.json', function(data) {
       </script>
     </div>
   </div>
+<script src="js/app.js"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.js"></script>
 <!--
 <script src="js/ColumnFilterWidgets.js"></script>
