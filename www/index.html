@@ -132,10 +132,13 @@
 body {
 	font: 14px/18px "Open Sans", sans-serif;
 }
-input {
+article h1, article h2 {
+	line-height: auto;
+}
+article input {
 	border: 1px solid #999;
 }
-tr th {
+article tr th {
     max-height: 25px;
 }
 .sorting_1 { background-color: #dfdfdf; }
@@ -168,22 +171,22 @@ tr th {
                 <tr>
                     <th class="all"></th>
                     <th class="all">School</th>
-                    <th class="all">Borough</th>
-                    <th class="all">Tested</th>
-                    <th class="all">Accepted</th>
-                    <th class="all">8th graders</th>
-					<th class="all">7% cap</th>
+                    <th class="tablet">Borough</th>
+                    <th class="tablet">8th graders</th>
+                    <th class="tablet">Tested</th>
+                    <th class="tablet">Accepted</th>
+					<th class="tablet">7% cap</th>
 					<th class="all">Gain/Loss</th>
-					<th class="all">%&nbsp;Tested</th>
-					<th class="all">%&nbsp;Accepted</th>
-					<th class="all">%&nbsp;Accepted&nbsp;Overall</th>
+					<th class="desktop">%&nbsp;Tested</th>
+					<th class="desktop">%&nbsp;Accepted</th>
+					<th class="desktop">%&nbsp;Accepted&nbsp;Overall</th>
 					<th class="none">%&nbsp;Asian</th>
 					<th class="none">%&nbsp;Black</th>
 					<th class="none">%&nbsp;Hispanic</th>
 					<th class="none">%&nbsp;White</th>
 					<th class="none">%&nbsp;With&nbsp;Disabilities</th>
                     <th class="none">%&nbsp;<abbr title="English Language Learner">ELL</abbr></th>
-					<th class="all">%&nbsp;Poverty</th>
+					<th class="desktop">%&nbsp;Poverty</th>
 					<th class="none">Economic Need Index</th>
 				</tr>
             </thead>
@@ -246,6 +249,7 @@ $.getJSON('data/shsat.json', function(data) {
         },
         {   data: "school" },
         {   data: "borough" },
+        {   data: "eighth-graders" },
         {   data: "tested",
 			type: 'non-empty-int',
             render: function ( data, type, row ) { 
@@ -266,7 +270,6 @@ $.getJSON('data/shsat.json', function(data) {
                 return data;
             }
         },
-        {   data: "eighth-graders" },
         {   data: "seven-percent" },
         {   data: "gain-loss",
 			type: 'non-empty-int',
