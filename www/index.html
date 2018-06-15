@@ -72,7 +72,7 @@
     <link rel="stylesheet" href="//interactive.nydailynews.com/nydn/c/rh.css">
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300,700|PT+Serif" rel="stylesheet">
-	<link rel="stylesheet" href="//cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.css"/>
 	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.0.1/css/responsive.dataTables.min.css">
     <script data-main="//interactive.nydailynews.com/nydn/js/rh.js?r=20170405001" src="//www.nydailynews.com/nydn/js/require.js?r=2016LIST" defer></script>
       
@@ -97,7 +97,10 @@
     <script onload="nydn_ads('one');" src="/includes/template/template.js"></script>
     <!-- ADS-END -->
 
+    <!--
     <script src="/js/jquery.min.js"></script>
+    -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
     <script>var nav_params = {section: 'projects', url: 'http://interactive.nydailynews.com/project/'};</script>
     <script src="/library/vendor-nav/vendor-include.js" defer></script>
@@ -135,6 +138,8 @@ input {
 tr th {
     max-height: 25px;
 }
+.sorting_1 { background-color: #dfdfdf; }
+.odd .sorting_1 { background-color: #d0d0d0; }
 #school-table_filter {
 	float: left;
     margin: 15px 0;
@@ -150,7 +155,7 @@ tr th {
         }
 </style>
 <section>
-		<h1 style="font-size:48px;">How will your middle school be affected by de Blasio’s SHSAT plan?</h1>
+		<h1 style="font-size:48px;">How would your middle school be affected by de Blasio’s SHSAT plan?</h1>
 
 		<h2 style="font-size:36px;">NYC middle school SHSAT acceptance database, 2017-2018 school year</h2>
 		<p>This is a database of SHSAT offers to NYC 8th graders for offers of admission for the Fall 2018 school year. You can sort the table by any of its fields.</p>
@@ -158,10 +163,10 @@ tr th {
 			Of note: The 7% cap column shows how many students from that school would be admitted to specialized high schools under Mayor de Blasio’s plan.
 			The column following the 7% cap, the Gain/Loss column, is a calculation that shows how many more or less students the school would send to specialized high school.
 		</p>
-        <table id="school-table" class="stripe table-bordered">
+        <table id="school-table" class="stripe table-bordered responsive">
             <thead>
                 <tr>
-                    <th></th>
+                    <th class="all"></th>
                     <th class="all">School</th>
                     <th class="all">Borough</th>
                     <th class="all">Tested</th>
@@ -224,12 +229,14 @@ $.getJSON('data/shsat.json', function(data) {
     } );
 
 	$('#school-table').dataTable( { 
+	responsive: {
+		details: true
+	},
     data: data,
     order: [ 7, "asc" ],
     paging: true,
     pagingType: 'numbers',
     pageLength: 20,
-    responsive: true,
     columns: [ 
         {
             className: 'details-control',
@@ -357,9 +364,6 @@ $.getJSON('data/shsat.json', function(data) {
         {   data: "economic-need-index",
 			type: 'non-empty-int',
             render: function ( data, type, row ) { 
-                if ( type == 'display' || type == 'filter' ) {
-                    if ( data !== '' ) return data + '%';
-                }
                 return data;
             }
         },
@@ -390,8 +394,7 @@ $.getJSON('data/shsat.json', function(data) {
       </script>
     </div>
   </div>
-<script src="//cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-<script src="//cdn.datatables.net/responsive/2.0.1/js/dataTables.responsive.js"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.js"></script>
 <!--
 <script src="js/ColumnFilterWidgets.js"></script>
 -->
