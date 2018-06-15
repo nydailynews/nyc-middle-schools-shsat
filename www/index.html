@@ -177,6 +177,8 @@ table.dataTable thead th, table.dataTable thead td {
 			Of note: The 7% column shows how many students from that school would be admitted to specialized high schools under Mayor de Blasio’s plan.
 			The column following the 7%, the Gain/Loss column, is a calculation that shows how many more or less students the school would send to specialized high school.
 		</p>
+        <section id="school-detail">
+        </section>
         <table id="school-table" class="stripe table-bordered responsive">
             <thead>
                 <tr>
@@ -208,12 +210,31 @@ table.dataTable thead th, table.dataTable thead td {
 // Sort additions adapted from https://stackoverflow.com/questions/25944854/sorting-alphabetical-order-to-ignore-empty-cells-datatables
 var school = {
 	data: {},
-	blurb: function(data) {
+	blurb: function(d) {
 		// Return markup suitable for a school detail view.
-		var sentence = "In the current school year, --(MS123)------- had ------ 8th graders take the Specialized High Schools Admissions Test.  ------ of them received offers of admission to one of the eight specialized high schools. Under the bill that Mayor de Blasio supports, the SHSAT would be ended and the top 7% of 8th graders would be offered admission, provided those students were in the top quarter of students citywide.  This would a change of ---- students for ---(MS123)---- being admitted. Students who do not make the top 7% cut would be eligible  for admission through a randomized drawing.";
+		var markup = '\n\
+     <p>\n\
+        In the current school year, ' + d['school'] + ' had ' + d['eighth-graders'] + ' 8th graders\n\
+        take the Specialized High Schools Admissions Test.\n\
+        ' + d['passed'] + ' received offers of admission to one of the eight specialized high schools.\n\
+     </p>\n\
+     <p>\n\
+        Under the bill that Mayor de Blasio supports, the SHSAT would be ended\n\
+        and the top 7% of 8th graders would be offered admission,\n\
+        provided those students were in the top quarter of students citywide.\n\
+        This would be a change of ' + d['gain-loss'] + ' students for ---(MS123)---- being admitted. Students who do not make the top 7% cut would be eligible  for admission through a randomized drawing.';
+        return markup;
 	},
 	detail: function(slug) {
 		console.log(school.data[slug]);
+        var d = school.data[slug];
+        var el = document.getElementById('school-detail');
+        var h = document.createElement('h3');
+        h.textContent = d['school'];
+        var div = document.createElement('div');
+        div.innerHTML = school.blurb(d);
+        el.appendChild(h);
+        el.appendChild(div);
 	},
 };
 
