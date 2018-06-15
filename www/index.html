@@ -132,6 +132,9 @@ body {
 input {
 	border: 1px solid #999;
 }
+tr th {
+    max-height: 25px;
+}
 #school-table_filter {
 	float: left;
     margin: 15px 0;
@@ -150,7 +153,7 @@ input {
 		<h2 style="font-size:36px;">How will your middle school be affected by de Blasio’s SHSAT plan?</h2>
 		<p>This is a database of SHSAT offers to NYC 8th graders for offers of admission for the Fall 2018 school year. You can sort the table by any of its fields.</p>
 		<p>
-			Of particular note: The 7% cap column shows how many students from that school would be admitted to specialized high schools under Mayor de Blasio’s plan.
+			Of note: The 7% cap column shows how many students from that school would be admitted to specialized high schools under Mayor de Blasio’s plan.
 			The column following the 7% cap, the Gain/Loss column, is a calculation that shows how many more or less students the school would send to specialized high school.
 		</p>
         <table id="school-table" class="stripe table-bordered">
@@ -181,40 +184,163 @@ input {
             </tfoot>
         </table>
 <script>
+// Adapted from https://stackoverflow.com/questions/25944854/sorting-alphabetical-order-to-ignore-empty-cells-datatables
 
 $.getJSON('data/shsat.json', function(data) {
+    jQuery.extend( jQuery.fn.dataTableExt.oSort, {
+        "non-empty-string-asc": function (str1, str2) {
+            if(str1 == "")
+                return 1;
+            if(str2 == "")
+                return -1;
+            return ((str1 < str2) ? -1 : ((str1 > str2) ? 1 : 0));
+        },
+     
+        "non-empty-string-desc": function (str1, str2) {
+            if(str1 == "")
+                return 1;
+            if(str2 == "")
+                return -1;
+            return ((str1 < str2) ? 1 : ((str1 > str2) ? -1 : 0));
+        },
+            
+        "non-empty-int-asc": function (str1, str2) {
+            if(str1 == "")
+                return 9999;
+            if(str2 == "")
+                return -9999;
+            return ((str1 < str2) ? -1 : ((str1 > str2) ? 1 : 0));
+        },
+     
+        "non-empty-int-desc": function (str1, str2) {
+            if(str1 == "")
+                return 9999;
+            if(str2 == "")
+                return -9999;
+            return ((str1 < str2) ? 1 : ((str1 > str2) ? -1 : 0));
+        }
+    } );
+
 	$('#school-table').dataTable( { 
     data: data,
-    order: [ 7, "des" ],
+    order: [ 7, "asc" ],
     paging: true,
     pagingType: 'numbers',
-    pageLength: 40,
+    pageLength: 20,
     responsive: true,
     columns: [ 
         {
             "className": 'details-control',
             "orderable": false,
-            "data": null,
+              data: null,
             "defaultContent": ''
         },
-        { "data": "school" },
-        { "data": "borough" },
-        { "data": "tested" },
-        { "data": "passed" },
-        { "data": "eighth-graders" },
-        { "data": "seven-percent" },
-        { "data": "gain-loss" },
-        { "data": "%-tested" },
-        { "data": "%-passed" },
-        { "data": "%-passed-overall" },
-        { "data": "%-asian" },
-        { "data": "%-black" },
-        { "data": "%-hispanic" },
-        { "data": "%-white" },
-        { "data": "%-with-disabilities" },
-        { "data": "%-ell" },
-        { "data": "%-poverty" },
-        { "data": "economic-need-index" }
+        {   data: "school" },
+        {   data: "borough" },
+        {   data: "tested" },
+        {   data: "passed" },
+        {   data: "eighth-graders" },
+        {   data: "seven-percent" },
+        {   data: "gain-loss" },
+        {   data: "%-tested",
+			type: 'non-empty-int',
+            render: function ( data, type, row ) { 
+                if ( type == 'display' || type == 'filter' ) {
+                    if ( data !== '' && data !== 'n/a' ) return data + '%';
+                }
+                return data;
+            }
+        },
+        {   data: "%-passed",
+			type: 'non-empty-int',
+            render: function ( data, type, row ) { 
+                if ( type == 'display' || type == 'filter' ) {
+                    if ( data !== '' ) return data + '%';
+                }
+                return data;
+            }
+        },
+        {   data: "%-passed-overall",
+			type: 'non-empty-int',
+            render: function ( data, type, row ) { 
+                if ( type == 'display' || type == 'filter' ) {
+                    if ( data !== '' ) return data + '%';
+                }
+                return data;
+            }
+        },
+        {   data: "%-asian",
+			type: 'non-empty-int',
+            render: function ( data, type, row ) { 
+                if ( type == 'display' || type == 'filter' ) {
+                    if ( data !== '' ) return data + '%';
+                }
+                return data;
+            }
+        },
+        {   data: "%-black",
+			type: 'non-empty-int',
+            render: function ( data, type, row ) { 
+                if ( type == 'display' || type == 'filter' ) {
+                    if ( data !== '' ) return data + '%';
+                }
+                return data;
+            }
+        },
+        {   data: "%-hispanic",
+			type: 'non-empty-int',
+            render: function ( data, type, row ) { 
+                if ( type == 'display' || type == 'filter' ) {
+                    if ( data !== '' ) return data + '%';
+                }
+                return data;
+            }
+        },
+        {   data: "%-white",
+			type: 'non-empty-int',
+            render: function ( data, type, row ) { 
+                if ( type == 'display' || type == 'filter' ) {
+                    if ( data !== '' ) return data + '%';
+                }
+                return data;
+            }
+        },
+        {   data: "%-with-disabilities",
+			type: 'non-empty-int',
+            render: function ( data, type, row ) { 
+                if ( type == 'display' || type == 'filter' ) {
+                    if ( data !== '' ) return data + '%';
+                }
+                return data;
+            }
+        },
+        {   data: "%-ell",
+			type: 'non-empty-int',
+            render: function ( data, type, row ) { 
+                if ( type == 'display' || type == 'filter' ) {
+                    if ( data !== '' ) return data + '%';
+                }
+                return data;
+            }
+        },
+        {   data: "%-poverty",
+			type: 'non-empty-int',
+            render: function ( data, type, row ) { 
+                if ( type == 'display' || type == 'filter' ) {
+                    if ( data !== '' ) return data + '%';
+                }
+                return data;
+            }
+        },
+        {   data: "economic-need-index",
+			type: 'non-empty-int',
+            render: function ( data, type, row ) { 
+                if ( type == 'display' || type == 'filter' ) {
+                    if ( data !== '' ) return data + '%';
+                }
+                return data;
+            }
+        },
     ],
     autoWidth: false,
     //deferRender: true,
