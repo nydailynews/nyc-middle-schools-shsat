@@ -167,8 +167,19 @@ table.dataTable thead th, table.dataTable thead td {
             text-align: left;
             min-width:150px;
         }
+#school-detail {
+	padding: 10px 25px 10px 25px;
+}
+.highlight {
+	background-color: #f5b093;
+	transition: all 3s ease;
+}
+.bye-highlight {
+	background-color: #fff;
+	transition: all 3s ease;
+}
 </style>
-<section>
+	<section>
 		<h1 style="font-size:48px;">How would your middle school be affected by de Blasio’s SHSAT plan?</h1>
 
 		<h2 style="font-size:36px;">NYC middle school SHSAT acceptance database, 2017-2018 school year</h2>
@@ -227,14 +238,21 @@ var school = {
 	},
 	detail: function(slug) {
 		console.log(school.data[slug]);
+		// Scroll to the detail
+	    $('html, body').animate({
+			scrollTop: $("#school-detail").offset().top
+		}, 2000);
         var d = school.data[slug];
         var el = document.getElementById('school-detail');
+        el.innerHTML = '';
         var h = document.createElement('h3');
         h.textContent = d['school'];
         var div = document.createElement('div');
         div.innerHTML = school.blurb(d);
         el.appendChild(h);
         el.appendChild(div);
+		// Make it pop
+		$(el).addClass('highlight');
 	},
 };
 
