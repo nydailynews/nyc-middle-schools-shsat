@@ -150,7 +150,9 @@ tr th {
         }
 </style>
 <section>
-		<h2 style="font-size:36px;">How will your middle school be affected by de Blasio’s SHSAT plan?</h2>
+		<h1 style="font-size:48px;">How will your middle school be affected by de Blasio’s SHSAT plan?</h1>
+
+		<h2 style="font-size:36px;">NYC middle school SHSAT acceptance database, 2017-2018 school year</h2>
 		<p>This is a database of SHSAT offers to NYC 8th graders for offers of admission for the Fall 2018 school year. You can sort the table by any of its fields.</p>
 		<p>
 			Of note: The 7% cap column shows how many students from that school would be admitted to specialized high schools under Mayor de Blasio’s plan.
@@ -163,13 +165,13 @@ tr th {
                     <th class="all">School</th>
                     <th class="all">Borough</th>
                     <th class="all">Tested</th>
-                    <th class="all">Passed</th>
+                    <th class="all">Accepted</th>
                     <th class="all">8th graders</th>
 					<th class="all">7% cap</th>
 					<th class="all">Gain/Loss</th>
 					<th class="all">%&nbsp;Tested</th>
-					<th class="all">%&nbsp;Passed</th>
-					<th class="all">%&nbsp;Passed&nbsp;Overall</th>
+					<th class="all">%&nbsp;Accepted</th>
+					<th class="all">%&nbsp;Accepted&nbsp;Overall</th>
 					<th class="none">%&nbsp;Asian</th>
 					<th class="none">%&nbsp;Black</th>
 					<th class="none">%&nbsp;Hispanic</th>
@@ -230,10 +232,10 @@ $.getJSON('data/shsat.json', function(data) {
     responsive: true,
     columns: [ 
         {
-            "className": 'details-control',
-            "orderable": false,
-              data: null,
-            "defaultContent": ''
+            className: 'details-control',
+            orderable: false,
+            data: null,
+            defaultContent: ''
         },
         {   data: "school" },
         {   data: "borough" },
