@@ -134,12 +134,16 @@ input {
 }
 #school-table_filter {
 	float: left;
+    margin: 15px 0;
 }
+        #school-table_filter > label { text-transform: uppercase; font-size: 30px; }
+        #school-table_filter > label > input { height: 24px; width: 200px; }
         tr td {
             text-align: center;
         }
         tr > td:nth-child(2) {
             text-align: left;
+            min-width:150px;
         }
 </style>
 <section>
@@ -153,7 +157,7 @@ input {
             <thead>
                 <tr>
                     <th></th>
-                    <th class="all" style="min-width:150px;">School</th>
+                    <th class="all">School</th>
                     <th class="all">Borough</th>
                     <th class="all">Tested</th>
                     <th class="all">Passed</th>
@@ -168,9 +172,9 @@ input {
 					<th class="none">%&nbsp;Hispanic</th>
 					<th class="none">%&nbsp;White</th>
 					<th class="none">%&nbsp;With&nbsp;Disabilities</th>
-					<th class="none">%&nbsp;ELL</th>
+                    <th class="none">%&nbsp;<abbr title="English Language Learner">ELL</abbr></th>
 					<th class="all">%&nbsp;Poverty</th>
-					<th class="all">Economic Need Index</th>
+					<th class="none">Economic Need Index</th>
 				</tr>
             </thead>
             <tfoot>
