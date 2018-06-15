@@ -73,7 +73,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300,700|PT+Serif" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.css"/>
-	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.0.1/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.0.1/css/responsive.dataTables.min.css">
     <script data-main="//interactive.nydailynews.com/nydn/js/rh.js?r=20170405001" src="//www.nydailynews.com/nydn/js/require.js?r=2016LIST" defer></script>
       
     <script>
@@ -130,13 +130,13 @@
 
 <style>
 body {
-	font: 14px/18px "Open Sans", sans-serif;
+    font: 14px/18px "Open Sans", sans-serif;
 }
 article h2 {
-	line-height: 30px;
+    line-height: 30px;
 }
 article input {
-	border: 1px solid #999;
+    border: 1px solid #999;
 }
 article tr th {
     max-height: 25px;
@@ -144,19 +144,19 @@ article tr th {
 .sorting_1 { background-color: #dfdfdf; }
 .odd .sorting_1 { background-color: #d0d0d0; }
 #school-table_filter {
-	float: left;
+    float: left;
     margin: 15px 0;
 }
 body li span {
-	font-size: 12px;
-	line-height: 10px;
+    font-size: 12px;
+    line-height: 10px;
 }
 table.dataTable>tbody>tr.child ul.dtr-details>li {
-	padding: 0.1em 0;
+    padding: 0.1em 0;
 }
 table.dataTable thead th, table.dataTable thead td {
-	font-size: 13px;
-	padding: 5px 15px 5px 3px;
+    font-size: 13px;
+    padding: 5px 15px 5px 3px;
 }
         #school-table_filter > label { text-transform: uppercase; font-size: 30px; }
         #school-table_filter > label > input { height: 24px; width: 200px; }
@@ -168,26 +168,26 @@ table.dataTable thead th, table.dataTable thead td {
             min-width:150px;
         }
 #school-detail {
-	padding: 10px 25px 10px 25px;
+    padding: 10px 25px 10px 25px;
 }
 .highlight {
-	background-color: #f5b093;
-	transition: all 3s ease;
+    background-color: #f5b093;
+    transition: all 3s ease;
 }
 .bye-highlight {
-	background-color: #fff;
-	transition: all 3s ease;
+    background-color: #fff;
+    transition: all 3s ease;
 }
 </style>
-	<section>
-		<h1 style="font-size:48px;">How would your middle school be affected by de Blasio’s SHSAT plan?</h1>
+    <section>
+        <h1 style="font-size:48px;">How would your middle school be affected by de Blasio’s SHSAT plan?</h1>
 
-		<h2 style="font-size:36px;">NYC middle school SHSAT acceptance database, 2017-2018 school year</h2>
-		<p>This is a database of SHSAT offers to NYC 8th graders for offers of admission for the Fall 2018 school year. You can sort the table by any of its fields.</p>
-		<p>
-			Of note: The 7% column shows how many students from that school would be admitted to specialized high schools under Mayor de Blasio’s plan.
-			The column following the 7%, the Gain/Loss column, is a calculation that shows how many more or less students the school would send to specialized high school.
-		</p>
+        <h2 style="font-size:36px;">NYC middle school SHSAT acceptance database, 2017-2018 school year</h2>
+        <p>This is a database of SHSAT offers to NYC 8th graders for offers of admission for the Fall 2018 school year. You can sort the table by any of its fields.</p>
+        <p>
+            Of note: The 7% column shows how many students from that school would be admitted to specialized high schools under Mayor de Blasio’s plan.
+            The column following the 7%, the Gain/Loss column, is a calculation that shows how many more or less students the school would send to specialized high school.
+        </p>
         <section id="school-detail">
         </section>
         <table id="school-table" class="stripe table-bordered responsive">
@@ -199,20 +199,20 @@ table.dataTable thead th, table.dataTable thead td {
                     <th class="tablet desktop">8th graders</th>
                     <th class="tablet desktop">Tested</th>
                     <th class="tablet desktop">Accepted</th>
-					<th class="tablet desktop">7%</th>
-					<th class="all">Change</th>
-					<th class="desktop">%&nbsp;Tested</th>
-					<th class="desktop">%&nbsp;Accepted</th>
-					<th class="desktop">%&nbsp;Accepted Overall</th>
-					<th class="desktop">%&nbsp;Asian</th>
-					<th class="desktop">%&nbsp;Black</th>
-					<th class="desktop">%&nbsp;Hispanic</th>
-					<th class="desktop">%&nbsp;White</th>
-					<th class="none">%&nbsp;With&nbsp;Disabilities</th>
+                    <th class="tablet desktop">7%</th>
+                    <th class="all">Change</th>
+                    <th class="desktop">%&nbsp;Tested</th>
+                    <th class="desktop">%&nbsp;Accepted</th>
+                    <th class="desktop">%&nbsp;Accepted Overall</th>
+                    <th class="desktop">%&nbsp;Asian</th>
+                    <th class="desktop">%&nbsp;Black</th>
+                    <th class="desktop">%&nbsp;Hispanic</th>
+                    <th class="desktop">%&nbsp;White</th>
+                    <th class="none">%&nbsp;With&nbsp;Disabilities</th>
                     <th class="none">%&nbsp;<abbr title="English Language Learner">ELL</abbr></th>
-					<th class="desktop">%&nbsp;Poverty</th>
-					<th class="none">Economic Need Index</th>
-				</tr>
+                    <th class="desktop">%&nbsp;Poverty</th>
+                    <th class="none">Economic Need Index</th>
+                </tr>
             </thead>
             <tfoot>
             </tfoot>
@@ -220,10 +220,10 @@ table.dataTable thead th, table.dataTable thead td {
 <script>
 // Sort additions adapted from https://stackoverflow.com/questions/25944854/sorting-alphabetical-order-to-ignore-empty-cells-datatables
 var school = {
-	data: {},
-	blurb: function(d) {
-		// Return markup suitable for a school detail view.
-		var markup = '\n\
+    data: {},
+    blurb: function(d) {
+        // Return markup suitable for a school detail view.
+        var markup = '\n\
      <p>\n\
         In the current school year, ' + d['school'] + ' had ' + d['eighth-graders'] + ' 8th graders\n\
         take the Specialized High Schools Admissions Test.\n\
@@ -234,21 +234,21 @@ var school = {
         and the top 7% of 8th graders would be offered admission,\n\
         provided those students were in the top quarter of students citywide.\n\
         This would be a change of ' + d['gain-loss'] + ' students for ---(MS123)---- being admitted. Students who do not make the top 7% cut would be eligible  for admission through a randomized drawing.\n\
-	 </p>\n\
+     </p>\n\
 \n\
-	 <p class="social-share"><em>\n\
-		<a href="mailto:">Email this</a>,\n\
-		<a href="">tweet this</a></em>\n\
-	</p>\n\
+     <p class="social-share"><em>\n\
+        <a href="mailto:">Email this</a>,\n\
+        <a href="">tweet this</a></em>\n\
+    </p>\n\
 ';
         return markup;
-	},
-	detail: function(slug) {
-		console.log(school.data[slug]);
-		// Scroll to the detail
-	    $('html, body').animate({
-			scrollTop: $("#school-detail").offset().top
-		}, 2000);
+    },
+    detail: function(slug) {
+        console.log(school.data[slug]);
+        // Scroll to the detail
+        $('html, body').animate({
+            scrollTop: $("#school-detail").offset().top
+        }, 2000);
         var d = school.data[slug];
         var el = document.getElementById('school-detail');
         el.innerHTML = '';
@@ -258,9 +258,9 @@ var school = {
         div.innerHTML = school.blurb(d);
         el.appendChild(h);
         el.appendChild(div);
-		// Make it pop
-		$(el).addClass('highlight');
-	},
+        // Make it pop
+        $(el).addClass('highlight');
+    },
 };
 
 function school_detail(hey) { console.log('sdfsdf'); console.log(hey); }
@@ -299,10 +299,10 @@ $.getJSON('data/shsat.json', function(data) {
         }
     } );
 
-	$('#school-table').dataTable( { 
-	responsive: {
-		details: true
-	},
+    $('#school-table').dataTable( { 
+    responsive: {
+        details: true
+    },
     data: data,
     order: [ 7, "asc" ],
     paging: true,
@@ -316,10 +316,10 @@ $.getJSON('data/shsat.json', function(data) {
             defaultContent: ''
         },
         {   data: "school",
-			render: function ( data, type, row ) {
-				if ( type == 'display' || type == 'filter' ) {
-					// Add the detail data to the school object
-					// if it's not already in there.
+            render: function ( data, type, row ) {
+                if ( type == 'display' || type == 'filter' ) {
+                    // Add the detail data to the school object
+                    // if it's not already in there.
                     var slug = utils.slugify(data);
                     if ( typeof school.data[slug] === 'undefined' ) school.data[slug] = row;
                     return '<a href="#' + slug + '"\n\
@@ -327,12 +327,12 @@ $.getJSON('data/shsat.json', function(data) {
                         ' + data + '</a>';
                 }
                 return data;
-			}
-		},
+            }
+        },
         {   data: "borough" },
         {   data: "eighth-graders" },
         {   data: "tested",
-			type: 'non-empty-int',
+            type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 if ( data === 's' ) {
                     if ( type == 'display' || type == 'filter' ) return '< 5';
@@ -342,7 +342,7 @@ $.getJSON('data/shsat.json', function(data) {
             }
         },
         {   data: "passed",
-			type: 'non-empty-int',
+            type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 if ( data === 's' ) {
                     if ( type == 'display' || type == 'filter' ) return '< 5';
@@ -353,10 +353,10 @@ $.getJSON('data/shsat.json', function(data) {
         },
         {   data: "seven-percent" },
         {   data: "gain-loss",
-			type: 'non-empty-int',
+            type: 'non-empty-int',
         },
         {   data: "%-tested",
-			type: 'non-empty-int',
+            type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 if ( type == 'display' || type == 'filter' ) {
                     if ( data !== '' && data !== 'n/a' ) return data + '%';
@@ -365,7 +365,7 @@ $.getJSON('data/shsat.json', function(data) {
             }
         },
         {   data: "%-passed",
-			type: 'non-empty-int',
+            type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 if ( type == 'display' || type == 'filter' ) {
                     if ( data !== '' ) return data + '%';
@@ -374,7 +374,7 @@ $.getJSON('data/shsat.json', function(data) {
             }
         },
         {   data: "%-passed-overall",
-			type: 'non-empty-int',
+            type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 if ( type == 'display' || type == 'filter' ) {
                     if ( data !== '' ) return data + '%';
@@ -383,7 +383,7 @@ $.getJSON('data/shsat.json', function(data) {
             }
         },
         {   data: "%-asian",
-			type: 'non-empty-int',
+            type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 if ( type == 'display' || type == 'filter' ) {
                     if ( data !== '' ) return data + '%';
@@ -392,7 +392,7 @@ $.getJSON('data/shsat.json', function(data) {
             }
         },
         {   data: "%-black",
-			type: 'non-empty-int',
+            type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 if ( type == 'display' || type == 'filter' ) {
                     if ( data !== '' ) return data + '%';
@@ -401,7 +401,7 @@ $.getJSON('data/shsat.json', function(data) {
             }
         },
         {   data: "%-hispanic",
-			type: 'non-empty-int',
+            type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 if ( type == 'display' || type == 'filter' ) {
                     if ( data !== '' ) return data + '%';
@@ -410,7 +410,7 @@ $.getJSON('data/shsat.json', function(data) {
             }
         },
         {   data: "%-white",
-			type: 'non-empty-int',
+            type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 if ( type == 'display' || type == 'filter' ) {
                     if ( data !== '' ) return data + '%';
@@ -419,7 +419,7 @@ $.getJSON('data/shsat.json', function(data) {
             }
         },
         {   data: "%-with-disabilities",
-			type: 'non-empty-int',
+            type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 if ( type == 'display' || type == 'filter' ) {
                     if ( data !== '' ) return data + '%';
@@ -428,7 +428,7 @@ $.getJSON('data/shsat.json', function(data) {
             }
         },
         {   data: "%-ell",
-			type: 'non-empty-int',
+            type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 if ( type == 'display' || type == 'filter' ) {
                     if ( data !== '' ) return data + '%';
@@ -437,7 +437,7 @@ $.getJSON('data/shsat.json', function(data) {
             }
         },
         {   data: "%-poverty",
-			type: 'non-empty-int',
+            type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 if ( type == 'display' || type == 'filter' ) {
                     if ( data !== '' ) return data + '%';
@@ -446,7 +446,7 @@ $.getJSON('data/shsat.json', function(data) {
             }
         },
         {   data: "economic-need-index",
-			type: 'non-empty-int',
+            type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 return data;
             }
