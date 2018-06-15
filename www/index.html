@@ -237,11 +237,31 @@ $.getJSON('data/shsat.json', function(data) {
         },
         {   data: "school" },
         {   data: "borough" },
-        {   data: "tested" },
-        {   data: "passed" },
+        {   data: "tested",
+			type: 'non-empty-int',
+            render: function ( data, type, row ) { 
+                if ( data === 's' ) {
+                    if ( type == 'display' || type == 'filter' ) return '< 5';
+                    else return 4;
+                }
+                return data;
+            }
+        },
+        {   data: "passed",
+			type: 'non-empty-int',
+            render: function ( data, type, row ) { 
+                if ( data === 's' ) {
+                    if ( type == 'display' || type == 'filter' ) return '< 5';
+                    else return 4;
+                }
+                return data;
+            }
+        },
         {   data: "eighth-graders" },
         {   data: "seven-percent" },
-        {   data: "gain-loss" },
+        {   data: "gain-loss",
+			type: 'non-empty-int',
+        },
         {   data: "%-tested",
 			type: 'non-empty-int',
             render: function ( data, type, row ) { 
