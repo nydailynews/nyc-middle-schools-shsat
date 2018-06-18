@@ -174,8 +174,23 @@ table.dataTable thead th, table.dataTable thead td {
 #school-detail h3 {
     font-size: 28px;
 }
+#school-detail h4 {
+    font-size: 20px;
+}
 #school-detail p {
     margin: 0 10px 10px 0;
+}
+#school-detail dt {
+    float: left;
+    color: #333;
+    font-weight: bold;
+}
+#school-detail dt:after {
+    content: ':';
+}
+#school-detail dd {
+    text-indent: 5px;
+    margin-bottom: 5px;
 }
 .highlight {
     background-color: #f5b093;
@@ -244,7 +259,7 @@ var school = {
         "%-hispanic": "Percent Hispanic",
         "%-white": "Percent White",
         "%-with-disabilities": "Percent with disabilities",
-        "%-ell": "Percent English Language Learner",
+        "%-ell": "Percent English language learner",
         "%-poverty": "Percent below poverty line",
         "economic-need-index": "Economic Need Index"
     },
@@ -289,10 +304,27 @@ var school = {
         div.innerHTML = school.blurb(d);
         el.appendChild(h);
         el.appendChild(div);
+
+        // Add the school demographics
         var h = document.createElement('h4');
         h.textContent = d['school'] + ' demographics, 2017-2018 school year';
         h.id = 'school-demographics';
         el.appendChild(h);
+
+        var dl = document.createElement('dl');
+        for ( var i = 0; i < this.data_keys.length; i ++ ) {
+            var key = this.data_keys[i];
+            var dt = document.createElement('dt');
+            dt.textContent = this.data_keynames[key];
+            dl.appendChild(dt);
+            var percent = '';
+            if ( this.data_keynames[key].indexOf('Percent') !== -1 ) percent = '%';
+            var dd = document.createElement('dd');
+            dd.textContent = d[key] + percent;
+            dl.appendChild(dd);
+        }
+        el.appendChild(dl);
+
         // Make it pop
         $(el).addClass('highlight');
     },
