@@ -228,6 +228,26 @@ table.dataTable thead th, table.dataTable thead td {
 // Sort additions adapted from https://stackoverflow.com/questions/25944854/sorting-alphabetical-order-to-ignore-empty-cells-datatables
 var school = {
     data: {},
+    data_keys: ["borough", "eighth-graders", "tested", "passed", "seven-percent", "gain-loss", "%-tested", "%-passed", "%-passed-overall", "%-asian", "%-black", "%-hispanic", "%-white", "%-with-disabilities", "%-ell", "%-poverty", "economic-need-index"],
+    data_keynames: {
+        "borough": "Borough",
+        "tested": "8th graders tested",
+        "passed": "8th graders accepted",
+        "eighth-graders": "8th graders",
+        "seven-percent": "7% of total 8th graders",
+        "gain-loss": "Change in accepted",
+        "%-tested": "Percent tested",
+        "%-passed": "Percent accepted",
+        "%-passed-overall": "Percent of total 8th graders tested",
+        "%-asian": "Percent Asian",
+        "%-black": "Percent Black",
+        "%-hispanic": "Percent Hispanic",
+        "%-white": "Percent White",
+        "%-with-disabilities": "Percent with disabilities",
+        "%-ell": "Percent English Language Learner",
+        "%-poverty": "Percent below poverty line",
+        "economic-need-index": "Economic Need Index"
+    },
 	hash: document.location.hash,
     blurb: function(d) {
         // Return markup suitable for a school detail view.
@@ -260,6 +280,7 @@ var school = {
             scrollTop: $("#school-detail").offset().top
         }, 2000);
         var d = school.data[slug];
+        console.log(Object.keys(d));
         var el = document.getElementById('school-detail');
         el.innerHTML = '';
         var h = document.createElement('h3');
@@ -268,6 +289,10 @@ var school = {
         div.innerHTML = school.blurb(d);
         el.appendChild(h);
         el.appendChild(div);
+        var h = document.createElement('h4');
+        h.textContent = d['school'] + ' demographics, 2017-2018 school year';
+        h.id = 'school-demographics';
+        el.appendChild(h);
         // Make it pop
         $(el).addClass('highlight');
     },
