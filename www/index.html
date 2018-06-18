@@ -287,6 +287,24 @@ var school = {
 ';
         return markup;
     },
+    demographics: function(d) {
+        // Return a dl element suitable for displaying school demographic info.
+        var dl = document.createElement('dl');
+        for ( var i = 0; i < this.data_keys.length; i ++ ) {
+            var key = this.data_keys[i];
+            var dt = document.createElement('dt');
+            dt.textContent = this.data_keynames[key];
+            dl.appendChild(dt);
+            var percent = '';
+            if ( this.data_keynames[key].indexOf('Percent') !== -1 && d[key] !== 'n/a' && d[key] !== '' ) percent = '%';
+            var dd = document.createElement('dd');
+            var val = d[key] + percent;
+            if ( val === 's' ) val = '< 6';
+            dd.textContent = val;
+            dl.appendChild(dd);
+        }
+        return dl;
+    },
     detail: function(slug) {
         // Display and scroll to the detail view for a school.
         console.log(school.data[slug]);
@@ -310,21 +328,7 @@ var school = {
         h.textContent = d['school'] + ' demographics, 2017-2018 school year';
         h.id = 'school-demographics';
         el.appendChild(h);
-
-        var dl = document.createElement('dl');
-        for ( var i = 0; i < this.data_keys.length; i ++ ) {
-            var key = this.data_keys[i];
-            var dt = document.createElement('dt');
-            dt.textContent = this.data_keynames[key];
-            dl.appendChild(dt);
-            var percent = '';
-            if ( this.data_keynames[key].indexOf('Percent') !== -1 && d[key] !== 'n/a' && d[key] !== '' ) percent = '%';
-            var dd = document.createElement('dd');
-            var val = d[key] + percent;
-            if ( val === 's' ) val = '< 6';
-            dd.textContent = val;
-            dl.appendChild(dd);
-        }
+        var dl = this.demographics(d);
         el.appendChild(dl);
 
         // Make it pop
