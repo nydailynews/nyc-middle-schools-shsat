@@ -169,6 +169,13 @@ table.dataTable thead th, table.dataTable thead td {
         }
 #school-detail {
     padding: 10px 25px 10px 25px;
+    margin: 25px 10px;
+}
+#school-detail h3 {
+    font-size: 28px;
+}
+#school-detail p {
+    margin: 0 10px 10px 0;
 }
 .highlight {
     background-color: #f5b093;
@@ -225,15 +232,16 @@ var school = {
         // Return markup suitable for a school detail view.
         var markup = '\n\
      <p>\n\
-        In the current school year, ' + d['school'] + ' had ' + d['eighth-graders'] + ' 8th graders\n\
+        In the 2017-2018 school year, ' + d['school'] + ' had ' + d['eighth-graders'] + ' 8th graders\n\
         take the Specialized High Schools Admissions Test.\n\
         ' + d['passed'] + ' received offers of admission to one of the eight specialized high schools.\n\
      </p>\n\
      <p>\n\
-        Under the bill that Mayor de Blasio supports, the SHSAT would be ended\n\
+     <strong>Under the bill that Mayor de Blasio supports</strong>, the SHSAT would end\n\
         and the top 7% of 8th graders would be offered admission,\n\
-        provided those students were in the top quarter of students citywide.\n\
-        This would be a change of ' + d['gain-loss'] + ' students for ---(MS123)---- being admitted. Students who do not make the top 7% cut would be eligible  for admission through a randomized drawing.\n\
+        provided those students were in the top 25% of students citywide.\n\
+        This would be a change of ' + d['gain-loss'] + ' students for ' + d['school'] + '.\n\
+        Students not in top 7% would be eligible for admission through a randomized drawing.\n\
      </p>\n\
 \n\
      <p class="social-share"><em>\n\
@@ -244,6 +252,7 @@ var school = {
         return markup;
     },
     detail: function(slug) {
+        // Display and scroll to the detail view for a school.
         console.log(school.data[slug]);
         // Scroll to the detail
         $('html, body').animate({
