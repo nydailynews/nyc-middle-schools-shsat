@@ -207,8 +207,8 @@ table.dataTable thead th, table.dataTable thead td {
         <h2 style="font-size:36px;">NYC middle school SHSAT acceptance database, 2017-2018 school year</h2>
         <p>This is a database of SHSAT offers to NYC 8th graders for offers of admission for the Fall 2018 school year. You can sort the table by any of its fields.</p>
         <p>
-            Of note: The 7% column shows how many students from that school would be admitted to specialized high schools under Mayor de Blasio’s plan.
-            The column following the 7%, the Gain/Loss column, is a calculation that shows how many more or less students the school would send to specialized high school.
+            Of note: The 7% column shows how many students from that school would be admitted to specialized high schools under Mayor de Blasio’s plan. <strong>Admitted students must also be in the top 25% citywide. This requirement is not factored into our calculations.</strong>
+            The column following the 7%, the Change column, is a calculation that shows how many more or less students the school would send to specialized high school. 
         </p>
         <section id="school-detail">
         </section>
@@ -277,7 +277,7 @@ var school = {
         and the top 7% of 8th graders would be offered admission,\n\
         provided those students were in the top 25% of students citywide.\n\
         This would be a change of ' + d['gain-loss'] + ' students for ' + d['school'] + '.\n\
-        Students not in top 7% would be eligible for admission through a randomized drawing.\n\
+        Students not in the top 7% would be eligible for admission through a randomized drawing.\n\
      </p>\n\
 \n\
      <p class="social-share"><em>\n\
@@ -318,9 +318,11 @@ var school = {
             dt.textContent = this.data_keynames[key];
             dl.appendChild(dt);
             var percent = '';
-            if ( this.data_keynames[key].indexOf('Percent') !== -1 ) percent = '%';
+            if ( this.data_keynames[key].indexOf('Percent') !== -1 && d[key] !== 'n/a' && d[key] !== '' ) percent = '%';
             var dd = document.createElement('dd');
-            dd.textContent = d[key] + percent;
+            var val = d[key] + percent;
+            if ( val === 's' ) val = '< 6';
+            dd.textContent = val;
             dl.appendChild(dd);
         }
         el.appendChild(dl);
@@ -412,7 +414,7 @@ $.getJSON('data/shsat.json', function(data) {
             type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 if ( data === 's' ) {
-                    if ( type == 'display' || type == 'filter' ) return '< 5';
+                    if ( type == 'display' || type == 'filter' ) return '< 6';
                     else return 4;
                 }
                 return data;
@@ -422,7 +424,7 @@ $.getJSON('data/shsat.json', function(data) {
             type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 if ( data === 's' ) {
-                    if ( type == 'display' || type == 'filter' ) return '< 5';
+                    if ( type == 'display' || type == 'filter' ) return '< 6';
                     else return 4;
                 }
                 return data;
