@@ -356,6 +356,13 @@ var school = {
         }
         return dl;
     },
+    make_chart() {
+        // Create a chart with d3.
+        // Returns a svg element for putting somewhere.
+        var svg = document.createElement('svg');
+        svg.id = 'school-chart';
+
+    },
     detail: function(slug) {
         // Display and scroll to the detail view for a school.
 
@@ -398,7 +405,6 @@ var school = {
     }
 };
 
-function school_detail(hey) { console.log('sdfsdf'); console.log(hey); }
 $.getJSON('data/shsat.json', function(data) {
     jQuery.extend( jQuery.fn.dataTableExt.oSort, {
         "non-empty-string-asc": function (str1, str2) {
