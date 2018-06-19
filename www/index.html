@@ -238,7 +238,7 @@ tr > td:nth-child(2) {
                     <th class="tablet desktop">Tested</th>
                     <th class="tablet desktop">Accepted</th>
                     <th class="tablet desktop">7% cut</th>
-                    <th class="all">Change</th>
+                    <th class="all"><abbr title="Tentative reduction or increase of students accepted into specialized high schools under the proposed legislation">Change</abbr></th>
                     <th class="desktop">%&nbsp;Tested</th>
                     <th class="desktop">%&nbsp;Accepted</th>
                     <th class="desktop">%&nbsp;Accepted Overall</th>
@@ -417,17 +417,17 @@ $.getJSON('data/shsat.json', function(data) {
         },
             
         "non-empty-int-asc": function (str1, str2) {
-            if(str1 == "")
+            if(str1 === "")
                 return 9999;
-            if(str2 == "")
+            if(str2 === "")
                 return -9999;
             return ((str1 < str2) ? -1 : ((str1 > str2) ? 1 : 0));
         },
      
         "non-empty-int-desc": function (str1, str2) {
-            if(str1 == "")
+            if(str1 === "")
                 return 9999;
-            if(str2 == "")
+            if(str2 === "")
                 return -9999;
             return ((str1 < str2) ? 1 : ((str1 > str2) ? -1 : 0));
         }
@@ -491,6 +491,13 @@ $.getJSON('data/shsat.json', function(data) {
         {   data: "seven-percent" },
         {   data: "gain-loss",
             type: 'non-empty-int',
+            render: function ( data, type, row ) { 
+                if ( type == 'sort' ) return data;
+
+                if ( Math.abs(data) !== data ) return data;
+                else if ( data == 0 ) return data;
+                return '+' + data;
+			}
         },
         {   data: "%-tested",
             type: 'non-empty-int',
