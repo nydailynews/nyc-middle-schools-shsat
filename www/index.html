@@ -382,9 +382,10 @@ var school = {
 
         // Make it pop
         $('html, body').animate({
-            scrollTop: $("#school-detail").offset().top
+            scrollTop: $('#school-detail').offset().top
         }, 2000);
 
+        el.setAttribute('role', 'alert');
         $(el).addClass('highlight');
     },
     init: function() {
