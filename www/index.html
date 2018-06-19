@@ -219,6 +219,7 @@ tr > td:nth-child(2) {
         </p>
         <section id="school-detail">
         </section>
+
   <div class="ad center">
     <div id='div-gpt-ad-1423507761396-1'>
       <script>
@@ -226,6 +227,7 @@ tr > td:nth-child(2) {
       </script>
     </div>
   </div>
+
         <table id="school-table" class="stripe table-bordered responsive">
             <thead>
                 <tr>
@@ -235,7 +237,7 @@ tr > td:nth-child(2) {
                     <th class="tablet desktop">8th graders</th>
                     <th class="tablet desktop">Tested</th>
                     <th class="tablet desktop">Accepted</th>
-                    <th class="tablet desktop">7%</th>
+                    <th class="tablet desktop">7% cut</th>
                     <th class="all">Change</th>
                     <th class="desktop">%&nbsp;Tested</th>
                     <th class="desktop">%&nbsp;Accepted</th>
@@ -244,10 +246,7 @@ tr > td:nth-child(2) {
                     <th class="desktop">%&nbsp;Black</th>
                     <th class="desktop">%&nbsp;Hispanic</th>
                     <th class="desktop">%&nbsp;White</th>
-                    <th class="none">%&nbsp;With&nbsp;Disabilities</th>
-                    <th class="none">%&nbsp;<abbr title="English Language Learner">ELL</abbr></th>
                     <th class="desktop">%&nbsp;Poverty</th>
-                    <th class="none">Economic Need Index</th>
                 </tr>
             </thead>
             <tfoot>
@@ -556,36 +555,12 @@ $.getJSON('data/shsat.json', function(data) {
                 return data;
             }
         },
-        {   data: "%-with-disabilities",
-            type: 'non-empty-int',
-            render: function ( data, type, row ) { 
-                if ( type == 'display' || type == 'filter' ) {
-                    if ( data !== '' ) return data + '%';
-                }
-                return data;
-            }
-        },
-        {   data: "%-ell",
-            type: 'non-empty-int',
-            render: function ( data, type, row ) { 
-                if ( type == 'display' || type == 'filter' ) {
-                    if ( data !== '' ) return data + '%';
-                }
-                return data;
-            }
-        },
         {   data: "%-poverty",
             type: 'non-empty-int',
             render: function ( data, type, row ) { 
                 if ( type == 'display' || type == 'filter' ) {
                     if ( data !== '' ) return data + '%';
                 }
-                return data;
-            }
-        },
-        {   data: "economic-need-index",
-            type: 'non-empty-int',
-            render: function ( data, type, row ) { 
                 return data;
             }
         },
