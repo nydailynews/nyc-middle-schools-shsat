@@ -114,10 +114,6 @@
 <!-- SITEHEADER-END -->
 
 <!-- CONTENT-START -->
-<main>
-    <article>
-        <div>
-    
 <style>
 body {
     font: 14px/18px "Open Sans", sans-serif;
@@ -211,7 +207,11 @@ caption dd {
     transition: all 3s ease;
 }
 </style>
-    <section>
+<main>
+    <article>
+        <div>
+    
+        <section>
         <h1 style="font-size:48px;">How would each middle school be affected by Mayor de Blasio’s specialized high school admissions plan?</h1>
 
 
@@ -238,50 +238,56 @@ caption dd {
         <p>
             Click on a school to see how the proposed 7% automatic admissions rule would have changed specialized high school offers for the Fall 2018 incoming ninth grade class.
         </p>
-        <section id="school-detail">
+        <div id="interface">
+            <section id="school-detail"></section>
+
+            <div class='ad center'>
+                <div id='div-gpt-ad-1423507761396-1'>
+                  <script>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1423507761396-1'); });
+                  </script>
+                </div>
+            </div>
+
+            <table id="school-table" class="stripe table-bordered responsive">
+                <caption>
+                    <dl>
+                        <dt>Top 7%</dt><dd>number of students who would be granted specialized HS offers based on a top 7% admissions policy, without adjustments</dd>
+                        <dt>Change</dt><dd>change in the number of students who would receive offers under a top 7% admissions policy</dd>
+                        <dt>% Tested</dt><dd>share of students in the middle school who took the SHSAT</dd>
+                        <dt>% Accepted</dt><dd>share of students who took the SHSAT who received a specialized HS offer</dd>
+                        <dt>% Accepted overall</dt><dd>share of all students in the school who received a specialized HS offer</dd>
+                    </dl>
+                </caption>
+                <thead>
+                    <tr>
+                        <th class="all"></th>
+                        <th class="all">School</th>
+                        <th class="tablet desktop">Borough</th>
+                        <th class="tablet desktop">8th graders</th>
+                        <th class="tablet desktop">Tested</th>
+                        <th class="tablet desktop">Accepted</th>
+                        <th class="tablet desktop">Top 7%</th>
+                        <th class="all"><abbr title="Tentative reduction or increase of students accepted into specialized high schools under the proposed legislation">Change</abbr></th>
+                        <th class="desktop">%&nbsp;Tested</th>
+                        <th class="desktop">%&nbsp;Accepted</th>
+                        <th class="desktop">%&nbsp;Accepted Overall</th>
+                        <th class="desktop">%&nbsp;Asian</th>
+                        <th class="desktop">%&nbsp;Black</th>
+                        <th class="desktop">%&nbsp;Hispanic</th>
+                        <th class="desktop">%&nbsp;White</th>
+                        <th class="desktop">%&nbsp;Poverty</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                </tfoot>
+            </table>
+        </div>
         </section>
-
-  <div class="ad center">
-    <div id='div-gpt-ad-1423507761396-1'>
-      <script>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1423507761396-1'); });
-      </script>
-    </div>
-  </div>
-
-        <table id="school-table" class="stripe table-bordered responsive">
-            <caption>
-                <dl>
-                    <dt>Top 7%</dt><dd>number of students who would be granted specialized HS offers based on a top 7% admissions policy, without adjustments</dd>
-                    <dt>Change</dt><dd>change in the number of students who would receive offers under a top 7% admissions policy</dd>
-                    <dt>% Tested</dt><dd>share of students in the middle school who took the SHSAT</dd>
-                    <dt>% Accepted</dt><dd>share of students who took the SHSAT who received a specialized HS offer</dd>
-                    <dt>% Accepted overall</dt><dd>share of all students in the school who received a specialized HS offer</dd>
-                </dl>
-            </caption>
-            <thead>
-                <tr>
-                    <th class="all"></th>
-                    <th class="all">School</th>
-                    <th class="tablet desktop">Borough</th>
-                    <th class="tablet desktop">8th graders</th>
-                    <th class="tablet desktop">Tested</th>
-                    <th class="tablet desktop">Accepted</th>
-                    <th class="tablet desktop">Top 7%</th>
-                    <th class="all"><abbr title="Tentative reduction or increase of students accepted into specialized high schools under the proposed legislation">Change</abbr></th>
-                    <th class="desktop">%&nbsp;Tested</th>
-                    <th class="desktop">%&nbsp;Accepted</th>
-                    <th class="desktop">%&nbsp;Accepted Overall</th>
-                    <th class="desktop">%&nbsp;Asian</th>
-                    <th class="desktop">%&nbsp;Black</th>
-                    <th class="desktop">%&nbsp;Hispanic</th>
-                    <th class="desktop">%&nbsp;White</th>
-                    <th class="desktop">%&nbsp;Poverty</th>
-                </tr>
-            </thead>
-            <tfoot>
-            </tfoot>
-        </table>
+            <p>Interactive by Alyssa Katz and Michael Aronson and Joe Murphy</p>
+        </div>
+    </article>
+</main>
 <script>
 // Sort additions adapted from https://stackoverflow.com/questions/25944854/sorting-alphabetical-order-to-ignore-empty-cells-datatables
 var school = {
@@ -610,13 +616,6 @@ $.getJSON('data/shsat.json', function(data) {
     school.init();
 }); // end getJSON
 </script>
-</section>
-
-
-            <p>Interactive by Alyssa Katz and Michael Aronson and Joe Murphy</p>
-        </div>
-    </article>
-</main>
 
   <div class="ad center">
     <div id='div-gpt-ad-1423507761396-3'>
@@ -630,6 +629,15 @@ $.getJSON('data/shsat.json', function(data) {
 <script src="/js/d3/d3.v5.min.js"></script>
 
 <script>
+// If we're iframe'd in here.
+if ( top !== self ) {
+    var interface = document.getElementById('interface');
+    var main = document.querySelector('main');
+    main.innerHTML = '';
+    main.appendChild(interface);
+    document.getElementById('templateheader').parentNode.removeChild(document.getElementById('templateheader'));
+    document.getElementById('templatefooter').parentNode.removeChild(document.getElementById('templatefooter'));
+}
 </script>
 
 <!-- CONTENT-END -->
