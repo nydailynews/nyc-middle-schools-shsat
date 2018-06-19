@@ -212,7 +212,7 @@ tr > td:nth-child(2) {
 
         <h2 style="font-size:36px;">NYC middle school SHSAT database, 2017-2018 school year</h2>
         <p>
-            This is a table of SHSAT offers to NYC public-school 8th graders for offers of admission for the Fall 2018 school year. You can sort the table by any of its fields.
+            This is a table of Specialized High School Admissions (SHSAT) offers to NYC public-school 8th graders for offers of admission for the Fall 2018 school year. You can sort the table by any of its fields.
         </p>
         <p>
             Of note: The 7% column shows how many students from that school would be admitted to specialized high schools under Mayor de Blasio’s plan. <strong>Admitted students must also be in the top 25% citywide. This requirement is not factored into our calculations.</strong>
@@ -289,6 +289,8 @@ var school = {
         if ( gain_loss === 1 ) s = '';
         if ( +gain_loss < 11 ) gain_loss = utils.ap_numerals[+gain_loss];
         var increase_sentence = 'This would be a ' + increase_decrease + ' of ' + gain_loss + ' student' + s + ' for ' + d['school'] + '.';
+        if ( gain_loss === 'zero' ) increase_sentence = '';
+
         var admission_sentence = 'Of those, ' + passed + ' received offers of admission to one of the eight specialized high schools.\n';
         if ( d['tested'] === '' ) admission_sentence = '';
 
@@ -300,7 +302,7 @@ var school = {
         var markup = '\n\
      <p>\n\
         In the 2017-2018 school year, ' + d['school'] + ' had ' + d['eighth-graders'] + ' 8th graders\n\
-        and of those, ' + tested + ' took the Specialized High Schools Admissions Test.\n\
+        and of those, ' + tested + ' took the Specialized High School Admissions Test.\n\
         ' + admission_sentence + '\n\
      </p>\n\
      <p>\n\
