@@ -71,6 +71,7 @@
     <script src="//assets.adobedtm.com/4fc527d6fda921c80e462d11a29deae2e4cf7514/satelliteLib-c91fdc6ac624c6cbcd50250f79786de339793801.js"></script>
     <link rel="stylesheet" href="//interactive.nydailynews.com/nydn/c/rh.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300,700|PT+Serif" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.css"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.0.1/css/responsive.dataTables.min.css">
@@ -117,17 +118,6 @@
     <article>
         <div>
     
-<!--
-  <div class="ad center">
-    <div id='div-gpt-ad-1423507761396-1'>
-      <script>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1423507761396-1'); });
-      </script>
-    </div>
-  </div>
--->
-
-
 <style>
 body {
     font: 14px/18px "Open Sans", sans-serif;
@@ -171,8 +161,6 @@ tr > td:nth-child(2) {
     min-width:150px;
 }
 
-
-
 #school-detail {
     padding: 10px 25px 10px 25px;
     margin: 25px 10px;
@@ -210,6 +198,17 @@ tr > td:nth-child(2) {
     <section>
         <h1 style="font-size:48px;">How would your middle school be affected by de Blasio’s SHSAT plan?</h1>
 
+
+		<div>
+			<ul class="ra-share" id="ra-share-top" style="text-align: center;">
+				<li class="rt-share-f"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://interactive.nydailynews.com/project/nyc-middle-school-shsat/">facebook</a> </li>
+				<li class="ra-share-t"> <a target="_blank" href="https://twitter.com/intent/tweet?text=&url=http://interactive.nydailynews.com/project/nyc-middle-school-shsat/&via=NYDNi&related=NYDNi,NYDailyNews">Tweet</a></li>
+				<li class="ra-share-e"> <a href="mailto:?subject=&body=http://interactive.nydailynews.com/project/nyc-middle-school-shsat/">email</a> </li>
+			</ul>
+		</div>
+
+		<p id="datestamp" class="stamp">Published June 21, 2018</p>
+
         <h2 style="font-size:36px;">NYC middle school SHSAT database, 2017-2018 school year</h2>
         <p>
             This is a table of Specialized High School Admissions (SHSAT) offers to NYC public-school 8th graders for offers of admission for the Fall 2018 school year. You can sort the table by any of its fields.
@@ -220,6 +219,13 @@ tr > td:nth-child(2) {
         </p>
         <section id="school-detail">
         </section>
+  <div class="ad center">
+    <div id='div-gpt-ad-1423507761396-1'>
+      <script>
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1423507761396-1'); });
+      </script>
+    </div>
+  </div>
         <table id="school-table" class="stripe table-bordered responsive">
             <thead>
                 <tr>
@@ -275,7 +281,7 @@ var school = {
     blurb: function(d) {
         // Return markup suitable for a school detail view.
         var passed = d['passed'];
-        if ( passed === 's' ) passed = '< 6';
+        if ( passed === 's' ) passed = 'fewer than six';
         else if ( passed === '' ) passed = 'zero';
         else if ( +passed < 11 ) passed = utils.ap_numerals[+passed];
 
@@ -326,10 +332,10 @@ var school = {
         students in private or religious schools.\n\
      </p>\n\
 \n\
-     <p class="social-share"><em>\n\
-        <a href="mailto:?subject=How%20' + d['school'] + '%20would%20be%20affected%20by%20de%20Blasio\'s%20plan&body=' + document.location.href + '">Email a link to this ' + d['school'] + ' profile</a>,\n\
-        <a href="">tweet a link to this ' + d['school'] + ' profile</a></em>\n\
-    </p>\n\
+     <ul class="social-share">\n\
+         <li><a href="mailto:?subject=How%20' + d['school'] + '%20would%20be%20affected%20by%20de%20Blasio\'s%20plan&body=' + document.location.href + '">Email a link to this ' + d['school'] + ' profile</a></li>\n\
+         <li><a href="https://twitter.com/intent/tweet?text=&url=http://interactive.nydailynews.com/project/nyc-middle-school-shsat/&via=NYDNi&related=NYDNi,NYDailyNews">Tweet a link to this school’s profile</a></li>\n\
+    </ul>\n\
 ';
         return markup;
     },
@@ -600,6 +606,7 @@ $.getJSON('data/shsat.json', function(data) {
 </section>
 
 
+            <p>Interactive by Michael Aronson and Joe Murphy</p>
         </div>
     </article>
 </main>
@@ -613,9 +620,8 @@ $.getJSON('data/shsat.json', function(data) {
   </div>
 <script src="js/app.js"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.js"></script>
-<!--
-<script src="js/ColumnFilterWidgets.js"></script>
--->
+<script>
+</script>
 
 <!-- CONTENT-END -->
 

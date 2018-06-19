@@ -1,0 +1,24 @@
+body {
+    width: 100%;
+    margin: 0;
+}
+
+#rh-subnav {
+    display: none;
+}
+
+.byline {
+    font: bold 20px "Open Sans Condensed", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.stamp {
+    font: normal 15px "Open Sans", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    color: #1F618D;
+    margin-bottom: 5px;
+}
