@@ -43,10 +43,10 @@
             "headline": "TITLE",
             "url": "CANONICAL",
             "thumbnailUrl": "CANONICALimg/share.png",
-            "dateCreated": "2018-07-12T06:00:00Z",
-            "articleSection": "Interactive",
-            "creator": ["Reporter Name", "Interactive Project"],
-            "keywords": ["interactive project","interactive"]
+            "dateCreated": "2018-06-18T06:00:00Z",
+            "articleSection": "Opinion",
+            "creator": ["Michael Aronson", "Interactive Project", "Joe Murphy"],
+            "keywords": ["interactive project","interactive","interactive spreadsheet","shsat", "new york public schools"]
         }
     </script>
 
@@ -102,7 +102,7 @@
     -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
-    <script>var nav_params = {section: 'projects', url: 'http://interactive.nydailynews.com/project/'};</script>
+    <script>var nav_params = {section: 'opinion', url: 'http://www.nydailynews.com/opinion/'};</script>
     <script src="/library/vendor-nav/vendor-include.js" defer></script>
 </head>
 
@@ -210,11 +210,13 @@ tr > td:nth-child(2) {
     <section>
         <h1 style="font-size:48px;">How would your middle school be affected by de Blasio’s SHSAT plan?</h1>
 
-        <h2 style="font-size:36px;">NYC middle school SHSAT acceptance database, 2017-2018 school year</h2>
-        <p>This is a database of SHSAT offers to NYC 8th graders for offers of admission for the Fall 2018 school year. You can sort the table by any of its fields.</p>
+        <h2 style="font-size:36px;">NYC middle school SHSAT database, 2017-2018 school year</h2>
+        <p>
+            This is a table of SHSAT offers to NYC public-school 8th graders for offers of admission for the Fall 2018 school year. You can sort the table by any of its fields.
+        </p>
         <p>
             Of note: The 7% column shows how many students from that school would be admitted to specialized high schools under Mayor de Blasio’s plan. <strong>Admitted students must also be in the top 25% citywide. This requirement is not factored into our calculations.</strong>
-            The column following the 7%, the Change column, is a calculation that shows how many more or less students the school would send to specialized high school. 
+            The column following the 7%, the Change column, is a calculation that shows how many more or less students from that middle school would have admission offers to the specialized high schools.
         </p>
         <section id="school-detail">
         </section>
@@ -272,18 +274,39 @@ var school = {
 	hash: document.location.hash,
     blurb: function(d) {
         // Return markup suitable for a school detail view.
+        var passed = d['passed'];
+        if ( passed === 's' ) passed = '< 6';
+        else if ( passed === '' ) passed = 'zero';
+        var tested = d['tested'];
+        if ( tested === '' ) tested = 'zero';
+        var increase_decrease = 'increase';
+        if ( Math.abs(d['gain-loss']) !== +d['gain-loss'] ) increase_decrease = 'decrease';
+        var gain_loss = Math.abs(d['gain-loss']);
         var markup = '\n\
      <p>\n\
         In the 2017-2018 school year, ' + d['school'] + ' had ' + d['eighth-graders'] + ' 8th graders\n\
-        take the Specialized High Schools Admissions Test.\n\
-        ' + d['passed'] + ' received offers of admission to one of the eight specialized high schools.\n\
+        and of those, ' + tested + ' took the Specialized High Schools Admissions Test.\n\
+        Of those, ' + passed + ' received offers of admission to one of the eight specialized high schools.\n\
      </p>\n\
      <p>\n\
      <strong>Under the bill that Mayor de Blasio supports</strong>, the SHSAT would end\n\
-        and the top 7% of 8th graders would be offered admission,\n\
+        and the top 7% of 8th graders at each middle school would be offered admission,\n\
         provided those students were in the top 25% of students citywide.\n\
-        This would be a change of ' + d['gain-loss'] + ' students for ' + d['school'] + '.\n\
-        Students not in the top 7% would be eligible for admission through a randomized drawing.\n\
+      </p>\n\
+      <p>\n\
+        The top 7% will be calculated based on “multiple measures of student achievement,”\n\
+        according to the proposed legislation. The measures including\n\
+        academic course grades and standardized test scores.\n\
+      </p>\n\
+      <p>\n\
+        Seven percent of the ' + d['eighth-graders'] + ' eighth-graders at ' + d['school'] + ' would be\n\
+        ' + d['seven-percent'] + ' students.\n\
+      </p>\n\
+      <p>\n\
+        This would be a ' + increase_decrease + ' of ' + gain_loss + ' students for ' + d['school'] + '.\n\
+        Students not in the top 7% who have G.P.A.’s of at least 3.7 would be eligible\n\
+        for admission through a random drawing. The random drawing will also include\n\
+        students in private or religious schools.\n\
      </p>\n\
 \n\
      <p class="social-share"><em>\n\
