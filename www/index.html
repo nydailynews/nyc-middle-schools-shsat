@@ -277,16 +277,31 @@ var school = {
         var passed = d['passed'];
         if ( passed === 's' ) passed = '< 6';
         else if ( passed === '' ) passed = 'zero';
+        else if ( +passed < 11 ) passed = utils.ap_numerals[+passed];
+
         var tested = d['tested'];
-        if ( tested === '' ) tested = 'zero';
+        if ( tested === '' ) tested = 'none';
         var increase_decrease = 'increase';
         if ( Math.abs(d['gain-loss']) !== +d['gain-loss'] ) increase_decrease = 'decrease';
+
         var gain_loss = Math.abs(d['gain-loss']);
+        var s = 's';
+        if ( gain_loss === 1 ) s = '';
+        if ( +gain_loss < 11 ) gain_loss = utils.ap_numerals[+gain_loss];
+        var increase_sentence = 'This would be a ' + increase_decrease + ' of ' + gain_loss + ' student' + s + ' for ' + d['school'] + '.';
+        var admission_sentence = 'Of those, ' + passed + ' received offers of admission to one of the eight specialized high schools.\n';
+        if ( d['tested'] === '' ) admission_sentence = '';
+
+        var s = 's';
+        if ( +d['seven-percent'] === 1 ) s = '';
+        var seven_percent = d['seven-percent'];
+        if ( +seven_percent < 11 ) seven_percent = utils.ap_numerals[+seven_percent];
+
         var markup = '\n\
      <p>\n\
         In the 2017-2018 school year, ' + d['school'] + ' had ' + d['eighth-graders'] + ' 8th graders\n\
         and of those, ' + tested + ' took the Specialized High Schools Admissions Test.\n\
-        Of those, ' + passed + ' received offers of admission to one of the eight specialized high schools.\n\
+        ' + admission_sentence + '\n\
      </p>\n\
      <p>\n\
      <strong>Under the bill that Mayor de Blasio supports</strong>, the SHSAT would end\n\
@@ -300,10 +315,10 @@ var school = {
       </p>\n\
       <p>\n\
         Seven percent of the ' + d['eighth-graders'] + ' eighth-graders at ' + d['school'] + ' would be\n\
-        ' + d['seven-percent'] + ' students.\n\
+        ' + seven_percent + ' student' + s + '.\n\
+        ' + increase_sentence + '\n\
       </p>\n\
       <p>\n\
-        This would be a ' + increase_decrease + ' of ' + gain_loss + ' students for ' + d['school'] + '.\n\
         Students not in the top 7% who have G.P.A.’s of at least 3.7 would be eligible\n\
         for admission through a random drawing. The random drawing will also include\n\
         students in private or religious schools.\n\
