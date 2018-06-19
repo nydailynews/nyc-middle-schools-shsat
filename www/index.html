@@ -160,6 +160,9 @@ tr > td:nth-child(2) {
     text-align: left;
     min-width:150px;
 }
+table caption {
+    caption-side: bottom;
+}
 
 #school-detail {
     padding: 10px 25px 10px 25px;
@@ -174,17 +177,30 @@ tr > td:nth-child(2) {
 #school-detail p {
     margin: 0 10px 10px 0;
 }
-#school-detail dt {
+ul.social-share {
+    margin-left: 20px;
+    margin-bottom: 17px;
+}
+ul.social-share li {
+    font-size: 120%;
+}
+main dt {
     float: left;
     color: #333;
     font-weight: bold;
 }
-#school-detail dt:after {
+main dt:after {
     content: ':';
 }
-#school-detail dd {
+main dd {
     text-indent: 5px;
     margin-bottom: 5px;
+}
+caption dt:after {
+    content: ' =';
+}
+caption dd {
+    text-align: left;
 }
 .highlight {
     background-color: #f5b093;
@@ -196,7 +212,7 @@ tr > td:nth-child(2) {
 }
 </style>
     <section>
-        <h1 style="font-size:48px;">How would your middle school be affected by de Blasio’s SHSAT plan?</h1>
+        <h1 style="font-size:48px;">How would each middle school be affected by Mayor de Blasio’s specialized high school admissions plan?</h1>
 
 
 		<div>
@@ -209,13 +225,18 @@ tr > td:nth-child(2) {
 
 		<p id="datestamp" class="stamp">Published June 21, 2018</p>
 
-        <h2 style="font-size:36px;">NYC middle school SHSAT database, 2017-2018 school year</h2>
+        <h2 style="font-size:36px;">SHSAT admissions by middle school for 2018-19</h2>
         <p>
-            This is a table of Specialized High School Admissions (SHSAT) offers to NYC public-school 8th graders for offers of admission for the Fall 2018 school year. You can sort the table by any of its fields.
+            This table displays offers of admission to eighth graders at each New York City public middle school for the 2018-19 school year to the eight New York City high schools that decide admissions exclusively based on the Specialized High School Admissions Test (SHSAT): Stuyvesant, Bronx Science; Brooklyn Tech, Staten Island Tech, High School of American Studies, High School for Math, Science and Engineering, Queens Science High School and Brooklyn Latin. In total, students received about 5,000 offers for approximately 3,800 seats.
         </p>
         <p>
-            Of note: The 7% column shows how many students from that school would be admitted to specialized high schools under Mayor de Blasio’s plan. <strong>Admitted students must also be in the top 25% citywide. This requirement is not factored into our calculations.</strong>
-            The column following the 7%, the Change column, is a calculation that shows how many more or less students from that middle school would have admission offers to the specialized high schools.
+            Mayor de Blasio proposes to eliminate the SHSAT and offer admission to the top 7% academic performers among eighth graders at each middle school, based on class grades and standardized tests. A bill in the state Legislature to implement his plan would restrict admission to those who are in the 25% of students citywide, and enable students not in the top 7% but with a 3.7 minimum GPA (as well as students attending private middle school or moving in from outside NYC) to receive offers via lottery.
+        </p>
+        <p>
+            For many middle schools, automatic admission of the top 7% of students would result in significant change in the number of students who receive offers to a specialized high school – the difference between the number of students in the “accepted” column and those in the “top 7%” column. (Note: the table does not reflect the impact of limiting offers to the top 25% of students citywide or of additional seats that students may be offered via lottery.)
+        </p>
+        <p>
+            Click on a school to see how the proposed 7% automatic admissions rule would have changed specialized high school offers for the Fall 2018 incoming ninth grade class.
         </p>
         <section id="school-detail">
         </section>
@@ -229,6 +250,15 @@ tr > td:nth-child(2) {
   </div>
 
         <table id="school-table" class="stripe table-bordered responsive">
+            <caption>
+                <dl>
+                    <dt>Top 7%</dt><dd>number of students who would be granted specialized HS offers based on a top 7% admissions policy, without adjustments</dd>
+                    <dt>Change</dt><dd>change in the number of students who would receive offers under a top 7% admissions policy</dd>
+                    <dt>% Tested</dt><dd>share of students in the middle school who took the SHSAT</dd>
+                    <dt>% Accepted</dt><dd>share of students who took the SHSAT who received a specialized HS offer</dd>
+                    <dt>% Accepted overall</dt><dd>share of all students in the school who received a specialized HS offer</dd>
+                </dl>
+            </caption>
             <thead>
                 <tr>
                     <th class="all"></th>
@@ -237,7 +267,7 @@ tr > td:nth-child(2) {
                     <th class="tablet desktop">8th graders</th>
                     <th class="tablet desktop">Tested</th>
                     <th class="tablet desktop">Accepted</th>
-                    <th class="tablet desktop">7% cut</th>
+                    <th class="tablet desktop">Top 7%</th>
                     <th class="all"><abbr title="Tentative reduction or increase of students accepted into specialized high schools under the proposed legislation">Change</abbr></th>
                     <th class="desktop">%&nbsp;Tested</th>
                     <th class="desktop">%&nbsp;Accepted</th>
@@ -311,25 +341,11 @@ var school = {
         ' + admission_sentence + '\n\
      </p>\n\
      <p>\n\
-     <strong>Under the bill that Mayor de Blasio supports</strong>, the SHSAT would end\n\
-        and the top 7% of 8th graders at each middle school would be offered admission,\n\
-        provided those students were in the top 25% of students citywide.\n\
-      </p>\n\
-      <p>\n\
-        The top 7% will be calculated based on “multiple measures of student achievement,”\n\
-        according to the proposed legislation. The measures including\n\
-        academic course grades and standardized test scores.\n\
-      </p>\n\
       <p>\n\
         Seven percent of the ' + d['eighth-graders'] + ' eighth-graders at ' + d['school'] + ' would be\n\
         ' + seven_percent + ' student' + s + '.\n\
         ' + increase_sentence + '\n\
       </p>\n\
-      <p>\n\
-        Students not in the top 7% who have G.P.A.’s of at least 3.7 would be eligible\n\
-        for admission through a random drawing. The random drawing will also include\n\
-        students in private or religious schools.\n\
-     </p>\n\
 \n\
      <ul class="social-share">\n\
          <li><a href="mailto:?subject=How%20' + d['school'] + '%20would%20be%20affected%20by%20de%20Blasio\'s%20plan&body=' + document.location.href + '">Email a link to this ' + d['school'] + ' profile</a></li>\n\
@@ -597,7 +613,7 @@ $.getJSON('data/shsat.json', function(data) {
 </section>
 
 
-            <p>Interactive by Michael Aronson and Joe Murphy</p>
+            <p>Interactive by Alyssa Katz and Michael Aronson and Joe Murphy</p>
         </div>
     </article>
 </main>
