@@ -43,9 +43,9 @@
             "headline": "TITLE",
             "url": "CANONICAL",
             "thumbnailUrl": "CANONICALimg/share.png",
-            "dateCreated": "2018-06-18T06:00:00Z",
+            "dateCreated": "2018-06-20T09:00:00Z"
             "articleSection": "Opinion",
-            "creator": ["Michael Aronson", "Interactive Project", "Joe Murphy"],
+            "creator": ["Michael Aronson", "Interactive Project", "Joe Murphy", "Alyssa Katz"],
             "keywords": ["interactive project","interactive","interactive spreadsheet","shsat", "new york public schools"]
         }
     </script>
@@ -223,7 +223,7 @@ caption dd {
 			</ul>
 		</div>
 
-		<p id="datestamp" class="stamp">Published June 21, 2018</p>
+		<p id="datestamp" class="stamp">Published June 20, 2018</p>
 
         <h2>SHSAT admissions by middle school for 2018-19</h2>
         <p>
@@ -379,12 +379,32 @@ var school = {
         }
         return dl;
     },
-    make_chart() {
+    make_chart(d) {
         // Create a chart with d3.
         // Returns a svg element for putting somewhere.
-        var svg = document.createElement('svg');
-        svg.id = 'school-chart';
 
+        // We're hard-coding the max values for the fields we're publishing
+        var max_passed = 205, max_seven = 54;
+        var max_circle = 150;
+
+        var svg = d3.select('#school-chart').append('svg')
+            .attr('width', 500)
+            .attr('height', 200)
+            .attr('id', 'comparison');
+
+        var circle_passed = svg.append('circle')
+            .attr('cx', 110)
+            .attr('cy', 90)
+            .attr('r', Math.floor((d['passed']/max_passed)*max_circle))
+            .style('fill', '#f00')
+                
+        var circle_seven = svg.append('circle')
+            .attr('cx', 310)
+            .attr('cy', 90)
+            .attr('r', Math.floor((d['seven-percent']/max_passed)*max_circle))
+            .style('fill', '#f00')
+                
+        
     },
     detail: function(slug) {
         // Display and scroll to the detail view for a school.
@@ -397,9 +417,15 @@ var school = {
 
         var h = document.createElement('h3');
         h.textContent = d['school'];
+        el.appendChild(h);
+
+        var fig = document.createElement('figure');
+        fig.id = 'school-chart';
+        el.appendChild(fig);
+        chart = this.make_chart(d);
+
         var div = document.createElement('div');
         div.innerHTML = school.blurb(d);
-        el.appendChild(h);
         el.appendChild(div);
 
         // Add the school demographics
