@@ -22,3 +22,115 @@ body {
     color: #1F618D;
     margin-bottom: 5px;
 }
+body {
+    font: 14px/18px "Open Sans", sans-serif;
+}
+article h1 {
+    font-size: 48px;
+}
+article h2 {
+    line-height: 30px;
+    font-size:36px;
+}
+article input {
+    border: 1px solid #999;
+}
+article tr th {
+    max-height: 25px;
+}
+article p {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+.sorting_1 { background-color: #dfdfdf; }
+.odd .sorting_1 { background-color: #d0d0d0; }
+#school-table_filter {
+    float: left;
+    margin: 15px 0;
+}
+body li span {
+    font-size: 12px;
+    line-height: 10px;
+}
+table.dataTable>tbody>tr.child ul.dtr-details>li {
+    padding: 0.1em 0;
+}
+table.dataTable thead th, table.dataTable thead td {
+    font-size: 13px;
+    padding: 5px 15px 5px 3px;
+}
+.dataTables_length { 
+    clear: both;
+}
+#school-table_filter > label { text-transform: uppercase; font-size: 30px; }
+#school-table_filter > label > input { height: 24px; width: 200px; }
+tr td {
+    text-align: center;
+}
+tr > td:nth-child(2) {
+    text-align: left;
+    min-width:150px;
+}
+table caption {
+    caption-side: bottom;
+}
+
+#school-detail {
+    padding: 10px 25px 10px 25px;
+    margin: 25px 10px;
+}
+.pre-highlight {
+    background-color: #f5b093;
+}
+#school-detail h3 {
+    margin-top: 10px;
+    font-size: 28px;
+    line-height: 24px;
+}
+#school-detail h4 {
+    font-size: 20px;
+}
+#school-detail p {
+    margin: 0 10px 10px 0;
+}
+figure {
+    max-width: 400px;
+    margin: auto;
+}
+figure figcaption {
+    font-style: italic;
+    color: #777;
+}
+ul.social-share {
+    margin-left: 20px;
+    margin-bottom: 17px;
+}
+ul.social-share li {
+    font-size: 120%;
+}
+main dt {
+    float: left;
+    color: #333;
+    font-weight: bold;
+}
+main dt:after {
+    content: ':';
+}
+main dd {
+    text-indent: 5px;
+    margin-bottom: 5px;
+}
+caption dt:after {
+    content: ' =';
+}
+caption dd {
+    text-align: left;
+}
+section.highlight {
+    animation-delay: 1s;
+    background-color: #eee!important;
+    border: 2px solid #ccc;
+    transition: all 3s ease;
+}
+input { border: 2px solid; }
