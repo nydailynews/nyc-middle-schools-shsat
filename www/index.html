@@ -174,6 +174,14 @@ table caption {
 #school-detail p {
     margin: 0 10px 10px 0;
 }
+figure {
+    max-width: 400px;
+    margin: auto;
+}
+figure figcaption {
+    font-style: italic;
+    color: #777;
+}
 ul.social-share {
     margin-left: 20px;
     margin-bottom: 17px;
@@ -385,24 +393,64 @@ var school = {
 
         // We're hard-coding the max values for the fields we're publishing
         var max_passed = 205, max_seven = 54;
-        var max_circle = 150;
+        var max_circle = 100;
 
         var svg = d3.select('#school-chart').append('svg')
             .attr('width', 500)
             .attr('height', 200)
             .attr('id', 'comparison');
 
+        var passed = d['passed'];
+        var passed_str = d['passed'];
+        if ( passed == 's') { passed = 5; passed_str = '< 6'; }
+        else if ( passed === '') { passed = 0; passed_str = '0'; }
         var circle_passed = svg.append('circle')
             .attr('cx', 110)
             .attr('cy', 90)
             .attr('r', Math.floor((d['passed']/max_passed)*max_circle))
             .style('fill', '#f00')
+
+        var text_passed = svg.append('text')
+            .attr('x', 110)
+            .attr('y', 90)
+            .style('text-anchor', 'middle')
+            .style('color', '#333')
+            .style('font-size', '40px')
+            .text(passed_str);
+                
+        var label_passed = svg.append('text')
+            .attr('x', 110)
+            .attr('y', 190)
+            .style('text-anchor', 'middle')
+            .style('color', '#333')
+            .style('font-size', '20px')
+            .text('SHSAT');
                 
         var circle_seven = svg.append('circle')
             .attr('cx', 310)
             .attr('cy', 90)
             .attr('r', Math.floor((d['seven-percent']/max_passed)*max_circle))
             .style('fill', '#f00')
+                
+        var seven = d['seven-percent'];
+        var seven_str = d['seven-percent'];
+        if ( seven== 's') { seven= 5; seven_str = '< 6'; }
+        else if ( seven === '') { seven = 0; seven_str = '0'; }
+        var text_seven = svg.append('text')
+            .attr('x', 310)
+            .attr('y', 90)
+            .style('text-anchor', 'middle')
+            .style('color', '#333')
+            .style('font-size', '40px')
+            .text(seven_str);
+
+        var label_seven = svg.append('text')
+            .attr('x', 310)
+            .attr('y', 190)
+            .style('text-anchor', 'middle')
+            .style('color', '#333')
+            .style('font-size', '20px')
+            .text('Top 7%');
                 
         
     },
@@ -423,6 +471,9 @@ var school = {
         fig.id = 'school-chart';
         el.appendChild(fig);
         chart = this.make_chart(d);
+        var caption = document.createElement('figcaption');
+        caption.textContent = 'Compare the number of students who passed the SHSAT in the 2017-18 school year against the number of students who would make up the top 7% of ' + d['school'] + '’s eighth graders.';
+        fig.appendChild(caption);
 
         var div = document.createElement('div');
         div.innerHTML = school.blurb(d);
