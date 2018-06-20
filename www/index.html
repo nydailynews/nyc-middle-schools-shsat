@@ -162,11 +162,14 @@ table caption {
 }
 
 #school-detail {
+    border: 2px solid #ccc;
     padding: 10px 25px 10px 25px;
     margin: 25px 10px;
+    background-color: #f5b093;
 }
 #school-detail h3 {
     font-size: 28px;
+    line-height: 24px;
 }
 #school-detail h4 {
     font-size: 20px;
@@ -207,12 +210,9 @@ caption dt:after {
 caption dd {
     text-align: left;
 }
-.highlight {
-    background-color: #f5b093;
-    transition: all 3s ease;
-}
-.bye-highlight {
-    background-color: #fff;
+section.highlight {
+    animation-delay: 1s;
+    background-color: #eee!important;
     transition: all 3s ease;
 }
 </style>
@@ -392,12 +392,14 @@ var school = {
         // Returns a svg element for putting somewhere.
 
         // We're hard-coding the max values for the fields we're publishing
+        var width = 500, height = 200;
         var max_passed = 205, max_seven = 54;
         var max_circle = 100;
+        var text_y = 80, label_y = height - 10;
 
         var svg = d3.select('#school-chart').append('svg')
-            .attr('width', 500)
-            .attr('height', 200)
+            .attr('width', width)
+            .attr('height', height)
             .attr('id', 'comparison');
 
         var passed = d['passed'];
@@ -408,11 +410,11 @@ var school = {
             .attr('cx', 110)
             .attr('cy', 90)
             .attr('r', Math.floor((d['passed']/max_passed)*max_circle))
-            .style('fill', '#f00')
+            .style('fill', '#e50404')
 
         var text_passed = svg.append('text')
             .attr('x', 110)
-            .attr('y', 90)
+            .attr('y', text_y)
             .style('text-anchor', 'middle')
             .style('color', '#333')
             .style('font-size', '40px')
@@ -420,33 +422,33 @@ var school = {
                 
         var label_passed = svg.append('text')
             .attr('x', 110)
-            .attr('y', 190)
+            .attr('y', label_y)
             .style('text-anchor', 'middle')
             .style('color', '#333')
             .style('font-size', '20px')
             .text('SHSAT');
                 
-        var circle_seven = svg.append('circle')
-            .attr('cx', 310)
-            .attr('cy', 90)
-            .attr('r', Math.floor((d['seven-percent']/max_passed)*max_circle))
-            .style('fill', '#f00')
-                
         var seven = d['seven-percent'];
         var seven_str = d['seven-percent'];
         if ( seven== 's') { seven= 5; seven_str = '< 6'; }
         else if ( seven === '') { seven = 0; seven_str = '0'; }
+        var circle_seven = svg.append('circle')
+            .attr('cx', 270)
+            .attr('cy', 90)
+            .attr('r', Math.floor((d['seven-percent']/max_passed)*max_circle))
+            .style('fill', '#e50404')
+                
         var text_seven = svg.append('text')
-            .attr('x', 310)
-            .attr('y', 90)
+            .attr('x', 270)
+            .attr('y', text_y)
             .style('text-anchor', 'middle')
             .style('color', '#333')
             .style('font-size', '40px')
             .text(seven_str);
 
         var label_seven = svg.append('text')
-            .attr('x', 310)
-            .attr('y', 190)
+            .attr('x', 270)
+            .attr('y', label_y)
             .style('text-anchor', 'middle')
             .style('color', '#333')
             .style('font-size', '20px')
