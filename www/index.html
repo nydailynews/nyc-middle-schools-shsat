@@ -235,15 +235,15 @@ input { border: 2px solid; }
         <section>
         <h1>How each middle school would be affected by Mayor de Blasio’s specialized high school admissions plan</h1>
 
-		<div>
-			<ul class="ra-share" id="ra-share-top" style="text-align: center;">
-				<li class="rt-share-f"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://interactive.nydailynews.com/project/nyc-middle-school-shsat-database/">facebook</a> </li>
-				<li class="ra-share-t"> <a target="_blank" href="https://twitter.com/intent/tweet?text=&url=http://interactive.nydailynews.com/project/nyc-middle-school-shsat-database/&via=NYDNi&related=NYDNi,NYDailyNews">Tweet</a></li>
-				<li class="ra-share-e"> <a href="mailto:?subject=&body=http://interactive.nydailynews.com/project/nyc-middle-school-shsat-database/">email</a> </li>
-			</ul>
-		</div>
+        <div>
+            <ul class="ra-share" id="ra-share-top" style="text-align: center;">
+                <li class="rt-share-f"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://interactive.nydailynews.com/project/nyc-middle-school-shsat-database/">facebook</a> </li>
+                <li class="ra-share-t"> <a target="_blank" href="https://twitter.com/intent/tweet?text=&url=http://interactive.nydailynews.com/project/nyc-middle-school-shsat-database/&via=NYDNi&related=NYDNi,NYDailyNews">Tweet</a></li>
+                <li class="ra-share-e"> <a href="mailto:?subject=&body=http://interactive.nydailynews.com/project/nyc-middle-school-shsat-database/">email</a> </li>
+            </ul>
+        </div>
 
-		<p id="datestamp" class="stamp">Published June 20, 2018</p>
+        <p id="datestamp" class="stamp">Published June 20, 2018</p>
 
         <h2>SHSAT admissions by middle school for 2018-19</h2>
         <p>
@@ -327,7 +327,7 @@ var school = {
         "%-poverty": "Percent below poverty line",
         "economic-need-index": "Economic Need Index"
     },
-	hash: document.location.hash,
+    hash: document.location.hash,
     blurb: function(d) {
         // Return markup suitable for a school detail view.
         // There's a good amount of text massaging going on here too.
@@ -509,12 +509,12 @@ var school = {
         $(el).addClass('highlight');
     },
     init: function() {
-		// If we've got hash values on page load that means we load a school detail
-		if ( this.hash !== '' && this.hash !== '#dev' )
-		{
-			var item = this.hash.substring(1);
-			this.detail(item);
-		}
+        // If we've got hash values on page load that means we load a school detail
+        if ( this.hash !== '' && this.hash !== '#dev' )
+        {
+            var item = this.hash.substring(1);
+            this.detail(item);
+        }
     }
 };
 
@@ -581,9 +581,9 @@ $.getJSON('data/shsat.json', function(data) {
                         onClick="school.detail(\'' + slug + '\');">\n\
                         ' + data + '</a>';
                 }
-				else if ( type === 'type' ) {
+                else if ( type === 'type' ) {
                     if ( typeof school.data[slug] === 'undefined' ) school.data[slug] = row;
-				}
+                }
                 return data;
             }
         },
@@ -620,7 +620,7 @@ $.getJSON('data/shsat.json', function(data) {
                 if ( Math.abs(data) !== data ) return data;
                 else if ( data == 0 ) return data;
                 return '+' + data;
-			}
+            }
         },
         {   data: "%-tested",
             type: 'non-empty-int',
