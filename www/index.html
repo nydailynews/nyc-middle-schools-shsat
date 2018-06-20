@@ -21,7 +21,7 @@
     <meta name="twitter:description" content="Search our online database of SHSAT admissions by NYC middle school for the 2018-19 school year" />
 
     <!-- KEYWORD -->
-    <meta name="keywords" content="TAGS" />
+    <meta name="keywords" content="NYC SHSAT,middle schools NYC,school performance NYC" />
 
     <!-- LINK -->
     <link rel="canonical" href="http://interactive.nydailynews.com/project/nyc-middle-school-shsat-database/">
@@ -118,6 +118,9 @@
 body {
     font: 14px/18px "Open Sans", sans-serif;
 }
+article h1 {
+    font-size: 48px;
+}
 article h2 {
     line-height: 30px;
     font-size:36px;
@@ -127,6 +130,11 @@ article input {
 }
 article tr th {
     max-height: 25px;
+}
+article p {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 10px;
 }
 .sorting_1 { background-color: #dfdfdf; }
 .odd .sorting_1 { background-color: #d0d0d0; }
@@ -162,7 +170,6 @@ table caption {
 }
 
 #school-detail {
-    border: 2px solid #ccc;
     padding: 10px 25px 10px 25px;
     margin: 25px 10px;
 }
@@ -216,6 +223,7 @@ caption dd {
 section.highlight {
     animation-delay: 1s;
     background-color: #eee!important;
+    border: 2px solid #ccc;
     transition: all 3s ease;
 }
 input { border: 2px solid; }
@@ -225,13 +233,13 @@ input { border: 2px solid; }
         <div>
     
         <section>
-        <h1 style="font-size:48px;">How would each middle school be affected by Mayor de Blasio’s specialized high school admissions plan?</h1>
+        <h1>How each middle school would be affected by Mayor de Blasio’s specialized high school admissions plan</h1>
 
 		<div>
 			<ul class="ra-share" id="ra-share-top" style="text-align: center;">
-				<li class="rt-share-f"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://interactive.nydailynews.com/project/nyc-middle-school-shsat/">facebook</a> </li>
-				<li class="ra-share-t"> <a target="_blank" href="https://twitter.com/intent/tweet?text=&url=http://interactive.nydailynews.com/project/nyc-middle-school-shsat/&via=NYDNi&related=NYDNi,NYDailyNews">Tweet</a></li>
-				<li class="ra-share-e"> <a href="mailto:?subject=&body=http://interactive.nydailynews.com/project/nyc-middle-school-shsat/">email</a> </li>
+				<li class="rt-share-f"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://interactive.nydailynews.com/project/nyc-middle-school-shsat-database/">facebook</a> </li>
+				<li class="ra-share-t"> <a target="_blank" href="https://twitter.com/intent/tweet?text=&url=http://interactive.nydailynews.com/project/nyc-middle-school-shsat-database/&via=NYDNi&related=NYDNi,NYDailyNews">Tweet</a></li>
+				<li class="ra-share-e"> <a href="mailto:?subject=&body=http://interactive.nydailynews.com/project/nyc-middle-school-shsat-database/">email</a> </li>
 			</ul>
 		</div>
 
@@ -242,7 +250,7 @@ input { border: 2px solid; }
         This table displays offers of admission to eighth graders at each New York City public middle school for the 2018-19 school year to the <a href="http://schools.nyc.gov/Accountability/resources/testing/SHSAT.htm">eight New York City high schools</a> that decide admissions exclusively based on the Specialized High School Admissions Test (SHSAT). In total, students received about 5,000 offers for approximately 3,800 seats.
         </p>
         <p>
-        Mayor de Blasio proposes to eliminate the SHSAT and offer admission to the top 7% academic performers among eighth graders at each middle school. A bill in the state Legislature would restrict admission to those who are in the 25% of students citywide, and enable students not in the top 7% but with a 3.7 minimum GPA (as well as students attending private middle school or moving in from outside NYC) to receive offers via lottery.
+        <a href="http://www.nydailynews.com/news/politics/ny-pol-school-20180603-story.html">Mayor de Blasio proposes to eliminate the SHSAT</a> and offer admission to the top 7% academic performers among eighth graders at each middle school. A bill in the state Legislature would restrict admission to those who are in the 25% of students citywide, and enable students not in the top 7% but with a 3.7 minimum GPA (as well as students attending private middle school or moving in from outside NYC) to receive offers via lottery.
         </p>
         <p>
             Click or tap on a school to see how the proposed 7% automatic admissions rule would have changed specialized high school offers for the Fall 2018 incoming ninth grade class. (Note: the table does not reflect the impact of limiting offers to the top 25% of students citywide or of additional seats that students may be offered via lottery.)
@@ -363,7 +371,7 @@ var school = {
 \n\
      <ul class="social-share">\n\
          <li><a href="mailto:?subject=How%20' + d['school'] + '%20would%20be%20affected%20by%20de%20Blasio\'s%20plan&body=' + document.location.href + '">Email a link to this ' + d['school'] + ' profile</a></li>\n\
-         <li><a href="https://twitter.com/intent/tweet?text=&url=http://interactive.nydailynews.com/project/nyc-middle-school-shsat/&via=NYDNi&related=NYDNi,NYDailyNews">Tweet a link to this school’s profile</a></li>\n\
+         <li><a href="https://twitter.com/intent/tweet?text=&url=http://interactive.nydailynews.com/project/nyc-middle-school-shsat-database/&via=NYDNi&related=NYDNi,NYDailyNews">Tweet a link to this school’s profile</a></li>\n\
     </ul>\n\
 ';
         return markup;
