@@ -120,6 +120,7 @@ body {
 }
 article h2 {
     line-height: 30px;
+    font-size:36px;
 }
 article input {
     border: 1px solid #999;
@@ -214,7 +215,6 @@ caption dd {
         <section>
         <h1 style="font-size:48px;">How would each middle school be affected by Mayor de Blasio’s specialized high school admissions plan?</h1>
 
-
 		<div>
 			<ul class="ra-share" id="ra-share-top" style="text-align: center;">
 				<li class="rt-share-f"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://interactive.nydailynews.com/project/nyc-middle-school-shsat/">facebook</a> </li>
@@ -225,7 +225,7 @@ caption dd {
 
 		<p id="datestamp" class="stamp">Published June 21, 2018</p>
 
-        <h2 style="font-size:36px;">SHSAT admissions by middle school for 2018-19</h2>
+        <h2>SHSAT admissions by middle school for 2018-19</h2>
         <p>
             This table displays offers of admission to eighth graders at each New York City public middle school for the 2018-19 school year to the eight New York City high schools that decide admissions exclusively based on the Specialized High School Admissions Test (SHSAT): Stuyvesant, Bronx Science; Brooklyn Tech, Staten Island Tech, High School of American Studies, High School for Math, Science and Engineering, Queens Science High School and Brooklyn Latin. In total, students received about 5,000 offers for approximately 3,800 seats.
         </p>
@@ -315,6 +315,7 @@ var school = {
 	hash: document.location.hash,
     blurb: function(d) {
         // Return markup suitable for a school detail view.
+        // There's a good amount of text massaging going on here too.
         var passed = d['passed'];
         if ( passed === 's' ) passed = 'fewer than six';
         else if ( passed === '' ) passed = 'zero';
