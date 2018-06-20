@@ -45,7 +45,7 @@
             "thumbnailUrl": "CANONICALimg/share.png",
             "dateCreated": "2018-06-20T09:00:00Z"
             "articleSection": "Opinion",
-            "creator": ["Michael Aronson", "Interactive Project", "Joe Murphy", "Alyssa Katz"],
+            "creator": ["Interactive Project", "Joe Murphy", "Alyssa Katz"],
             "keywords": ["interactive project","interactive","interactive spreadsheet","shsat", "new york public schools"]
         }
     </script>
@@ -168,6 +168,7 @@ table caption {
     background-color: #f5b093;
 }
 #school-detail h3 {
+    margin-top: 10px;
     font-size: 28px;
     line-height: 24px;
 }
@@ -292,12 +293,11 @@ section.highlight {
             </table>
         </div>
         </section>
-            <p>Interactive by Alyssa Katz and Michael Aronson and Joe Murphy</p>
+            <p>Interactive by Alyssa Katz and Joe Murphy</p>
         </div>
     </article>
 </main>
 <script>
-// Sort additions adapted from https://stackoverflow.com/questions/25944854/sorting-alphabetical-order-to-ignore-empty-cells-datatables
 var school = {
     data: {},
     data_keys: ["borough", "eighth-graders", "tested", "passed", "seven-percent", "gain-loss", "%-tested", "%-passed", "%-passed-overall", "%-asian", "%-black", "%-hispanic", "%-white", "%-with-disabilities", "%-ell", "%-poverty", "economic-need-index"],
@@ -466,7 +466,7 @@ var school = {
         el.innerHTML = '';
 
         var h = document.createElement('h3');
-        h.textContent = d['school'];
+        h.textContent = 'How ' + d['school'] + ' would be affected';
         el.appendChild(h);
 
         var fig = document.createElement('figure');
@@ -490,9 +490,12 @@ var school = {
         el.appendChild(dl);
 
         // Make it pop
-        $('html, body').animate({
-            scrollTop: $('#school-detail').offset().top
-        }, 2000);
+        var t = $('#school-detail').offset().top;
+        window.setTimeout( function () {
+            $('html, body').animate({
+                scrollTop: t
+            }, 2000);
+                }, 1000 );
 
         el.setAttribute('role', 'alert');
         $(el).addClass('highlight');
@@ -508,6 +511,7 @@ var school = {
 };
 
 $.getJSON('data/shsat.json', function(data) {
+    // Sort additions adapted from https://stackoverflow.com/questions/25944854/sorting-alphabetical-order-to-ignore-empty-cells-datatables
     jQuery.extend( jQuery.fn.dataTableExt.oSort, {
         "non-empty-string-asc": function (str1, str2) {
             if(str1 == "")
