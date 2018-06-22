@@ -257,7 +257,7 @@ var school = {
 \n\
      <ul class="social-share">\n\
          <li><a href="mailto:?subject=How%20' + d['school'] + '%20would%20be%20affected%20by%20de%20Blasio\'s%20plan&body=' + document.location.href + '">Email a link to this ' + d['school'] + ' profile</a></li>\n\
-         <li><a href="https://twitter.com/intent/tweet?text=&url=http://interactive.nydailynews.com/project/nyc-middle-school-shsat-database/&via=NYDNi&related=NYDNi,NYDailyNews">Tweet a link to this school’s profile</a></li>\n\
+         <li><a href="https://twitter.com/intent/tweet?text=This is how ' + d['school'].replace('\\', ' ') + ' will be affected by de Blasio’s proposed elimination of the SHSAT:&url=http://interactive.nydailynews.com/project/nyc-middle-school-shsat-database/%23' + document.location.hash.substring(1) + '&via=NYDNi&related=NYDNi,NYDailyNews">Tweet a link to this school’s profile</a></li>\n\
     </ul>\n\
 ';
         return markup;
