@@ -200,10 +200,10 @@ var school = {
         "passed": "8th graders accepted",
         "eighth-graders": "8th graders",
         "seven-percent": "7% of total 8th graders",
-        "gain-loss": "Change in accepted",
+        "gain-loss": "Change in students accepted",
         "%-tested": "Percent tested",
         "%-passed": "Percent accepted",
-        "%-passed-overall": "Percent of total 8th graders tested",
+        "%-passed-overall": "Percent of total 8th graders accepted",
         "%-asian": "Percent Asian",
         "%-black": "Percent Black",
         "%-hispanic": "Percent Hispanic",
@@ -267,6 +267,7 @@ var school = {
         var dl = document.createElement('dl');
         for ( var i = 0; i < this.data_keys.length; i ++ ) {
             var key = this.data_keys[i];
+            if ( d[key] == '' && ['%-tested', '%-accepted'].indexOf(i) !== -1 ) continue;
             var dt = document.createElement('dt');
             dt.textContent = this.data_keynames[key];
             dl.appendChild(dt);
@@ -275,6 +276,7 @@ var school = {
             var dd = document.createElement('dd');
             var val = d[key] + percent;
             if ( val === 's' ) val = '< 6';
+            if ( ['%-passed-overall', '%-passed', 'gain-loss'].indexOf(key) !== -1 && val === '' ) val = 'n/a';
             dd.textContent = val;
             dl.appendChild(dd);
         }
